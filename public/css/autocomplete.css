@@ -1,0 +1,10 @@
+.bootstrap-tagsinput {line-height:40px;display:block !important;}
+.bootstrap-tagsinput .tag {background:rgb(94, 62, 26);padding:5px;border-radius:4px;}
+.tt-hint {top:1px !important;}
+.tt-input{vertical-align:baseline !important;}
+.typeahead { border: 1px solid #CCCCCC;border-radius: 4px;padding: 8px 12px;width: 300px;font-size:0.5rem;}
+.tt-menu { width:300px; }
+span.twitter-typeahead .tt-suggestion {padding: 10px 20px;	border-bottom:#CCC 1px solid;cursor:pointer;}
+span.twitter-typeahead .tt-suggestion:last-child { border-bottom:0px; }
+.demo-label {font-size:0.3rem;color: #686868;font-weight: 200;}
+.bgcolor {max-width: 440px;height: 200px;background-color: #c3e8cb;padding: 40px 70px;border-radius:4px;margin:20px 0px;}

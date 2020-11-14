@@ -1,0 +1,261 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+
+</head>
+<body  > 
+    <%- include('../includes/navigation.ejs') %>
+    <div style="margin-top:100px"></div>
+    <div class="container-fluid mt-7">
+        <div class="row">
+            <div class="col-lg-8">
+                <section class="product_description_area" style="margin-top: 0;">
+                    <div class="review_list" id="reviewList">
+                        
+                        <div class="br"></div>
+                        
+                        <div class="review_item" id="displayDiscussions">
+                            <div class="media">
+                                <% if(discussion.bookExists) { %>
+                                <a href="/products/<%= discussion.bookId._id %>">
+                                    <div class="d-flex review__image">    
+                                            <img src="/<%= discussion.bookId.imageUrl %>" alt="post">
+                                    </div>
+                                </a>
+                                <% } else { %>
+                                    <a href="/profile/<%= discussion.userId._id %>">
+                                        <div class="d-flex">    
+                                                <img class="author_img rounded-circle" width="70" height="70" src="/<%= discussion.userId.imageUrl %>" alt="post">
+                                        </div>
+                                    </a>
+                                <% } %>
+                                <div class="media post_item">    
+                                    <div class="media-body" style="padding-left: 25px;">  
+                                        <h3><%= discussion.title %></h3>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <p><%= discussion.date.toDateString()+" "+discussion.date.getHours()+":"+discussion.date.getMinutes() %></p>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <a href="/profile/<%= discussion.userId._id %>"><p>Started by <%= discussion.userId.name %></p></a>
+                                                </div>
+                                                <% if(userIsLoggedIn) { %>
+                                                    <% if(current._id.toString()===discussion.userId._id.toString()) { %>
+                                                    <div class="col-lg-4">
+                                                        <a href="/edit-discussion/<%= discussion._id %>?edit=true" class="white_bg_btn">Edit</a>
+                                                        <form method="post" action="/delete-discussion/<%= discussion._id %>">
+                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                            <button type="submit" class="white_bg_btn" style="margin-left: 15px;">Delete</a>
+                                                        </form>
+                                                        
+                                                    </div>
+                                                    <% } %>
+                                                <% } %>
+                                               
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h6 id="discussion-comment"><%= discussion.comment %></h6>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="br"></div>
+                        </div>
+
+                        <div class="review_item" id="displayMessages">
+
+                            <p>Comments (<%= messages.length %>)</p>
+                            <% if(messages.length>0) { %>
+                                <% for(let message of messages) { %>
+                                <div class="message-line">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <p>Message from <a style="color: rgb(148, 88, 48);" href="/profile/<%= message.userId._id %>"><%= message.userId.name %></a></p>
+                                        </div>
+                                        
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <p>Posted on <%= message.date.toDateString()+" "+message.date.getHours()+":"+message.date.getMinutes() %></p>
+                                        </div>   
+                                        
+                                    </div>
+                                </div>
+                                <div class="media" id="singleMessage">
+                                    
+                                    <a href="/profile/<%= message.userId._id %>">
+                                        <div class="d-flex">    
+                                                <img class="author_img rounded-circle comment-img" src="/<%= message.userId.imageUrl %>" alt="post">
+                                        </div>
+                                    </a>
+                                    <div class="media post_item">  
+                                        <div class="media-body" style="padding-left: 25px;">  
+
+                                            <h6 id="discussion-comment"><%= message.comment %></h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <% } %>
+
+                            <% } %>
+                        </div>
+
+                        <% if (userIsLoggedIn) { %>
+                            <div class="comment-form" id="commentBox">
+                                <h4>Leave a Comment</h4>
+                                <form id="commentForm">
+        
+                                    <div class="form-group">
+        
+                                        <textarea class="form-control mb-10" rows="5" name="comment"
+                                            placeholder="Enter your comment"></textarea>
+                                    </div>
+                                    <input type="hidden" value="<%= JSON.stringify(discussion) %>" name="discussion">
+                                    <input type="hidden" value="<%= JSON.stringify(current) %>" name="current">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="primary-btn submit_btn">Post Comment</button>
+                                    <br><br>
+                                </form>
+
+                            </div>
+                            
+                        <% } %>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">Popular Forums</h4>
+                        <ul class="list cat-list"> 
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Word Game on Divergent series</p>
+                                    <p>250</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Fangirling over Jace from Mortal Instruments</p>
+                                    <p>37</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Elliot Wake's writing style</p>
+                                    <p>21</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Virginia Woolf or Slyvia Plath? and Why?</p>
+                                    <p>31</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="br"></div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"
+        integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA=" crossorigin="anonymous"></script>
+        
+    <script type="text/javascript">
+        let totalMessages = '<%= messages.length %>';
+        var today = new Date();
+        $(document).ready(function () {
+        },
+            $('#commentForm').submit(
+                function (e) {
+                    e.preventDefault();
+
+                    fetch('/add-message', {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'csrf-token': document.querySelector('#commentForm input[name=_csrf]').value
+                        },
+                        method: "POST",
+                        body: JSON.stringify({
+                            discussion: document.querySelector('#commentForm input[name=discussion]').value,
+                            current: document.querySelector('#commentForm input[name=current]').value,
+                            comment: document.querySelector('#commentForm textarea').value,
+                        })
+                    }).then((response) => {
+                        response.json()
+                            .then(data => {
+                                console.log(data);
+                                if (data.errorMessage) {
+                                    let userMessage = document.createElement("div");
+                                    userMessage.classList.add("user-message", "user-message--error");
+                                    userMessage.innerText = data.errorMessage;
+                                    document.getElementById("commentBox").append(userMessage);
+                                    console.log("EOF");
+                                }
+                                else {
+                                    if (totalMessages > 0) {
+                                        let displayMessages = document.getElementById("displayMessages");
+                                        // Creating a new comment element
+                                        // Creating the elements
+                                        let newMessage = document.createElement("div");
+                                        newMessage.className = "media";
+                                        let mediaBody = document.createElement("div");
+                                        mediaBody.className = "media-body";
+                                        let postItem = document.createElement("div");
+                                        postItem.classList.add("media","post_item");
+                                        let messageLine  = document.createElement("div");
+                                        messageLine.className = "message-line";
+                                        let rowElement = document.createElement("div");
+                                        rowElement.className = "row";
+                                        let messageNameElement = document.createElement('div');
+                                        messageNameElement.classList.add("col-lg-6","col-md-6","col-sm-12","col-xs-12");
+                                        let messageDateElement = document.createElement('div');
+                                        messageDateElement.classList.add("col-lg-6","col-md-6","col-sm-12","col-xs-12");
+                                        let messageUserName = document.createElement('p')
+                                        messageUserName.innerText = "Message from " + data.userName;
+                                        let messageDate= document.createElement('p');
+                                        messageDate.innerText = "Posted on "+data.date.toString();
+                                        let imageDiv = document.createElement("div");
+                                        imageDiv.className = "d-flex";
+                                        let image = document.createElement("img");
+                                        image.classList.add("author_img","rounded-circle","comment-img");
+                                        image.src = "/" + data.userImage;
+                                        let commentText = document.createElement("h6");
+                                        commentText.id = "discussion-comment";
+                                        commentText.innerText = data.comment;
+
+                                        // Injecting the elements
+                                        newMessage.appendChild(imageDiv);
+                                        newMessage.appendChild(postItem);
+                                        postItem.appendChild(mediaBody);
+                                        mediaBody.appendChild(commentText);                                    
+                                        messageLine.appendChild(rowElement);
+                                        rowElement.appendChild(messageNameElement);
+                                        rowElement.appendChild(messageDateElement);
+                                        messageNameElement.appendChild(messageUserName);
+                                        messageDateElement.appendChild(messageDate);
+                                        imageDiv.appendChild(image);
+
+                                        displayMessages.appendChild(messageLine);
+                                        displayMessages.appendChild(newMessage);
+                                        console.log("EOF");
+                                    }
+                                    
+                                }
+                            });
+                    });
+
+
+                })
+        );
+
+    </script>
+
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,147 @@
+<%- include('../includes/head.ejs') %>
+<link href="/css/typeahead.css"  rel="stylesheet" />
+<link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
+<link href="/css/autocomplete.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div style="margin-top:100px"></div>
+    <!-- <main>
+        <form class="product-form" action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="multipart/form-data">
+            <h2><% if(editing) { %>Edit Product Description<% } else { %>Add Product description<% } %></h2>
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input class="<%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>"
+                type="text" name="title" id="title" value="<% if(editing || hasError) { %><%= product.title %><% } %>">
+            </div>
+            
+            <div class="form-control">
+                <label for="image">Image URL</label>
+                <input type="file" name="image" id="image">
+            </div>
+            <div class="form-control">
+                <label for="price">Price</label>
+                <input class="<%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>"
+                type="number" name="price" id="price" step="0.01" value="<% if(editing || hasError) { %><%= product.price %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea class="<%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>"
+                name="description" id="description" rows="5"><% if(editing || hasError) { %><%= product.description %><% } %></textarea>
+            </div>
+            <% if(editing) { %>
+                <input type="hidden" value="<%= product._id %>" name="productId">
+            <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit"><% if(editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+        </form>
+
+        <% if(errorMessage) { %>
+            <br><br>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+    </main> -->
+    
+    <div class="container" style="margin-bottom: 5rem;">
+    <div class="col-lg-2 col-md-2"></div>
+    <div class="col-lg-8 col-md-8">
+        <h3 class="mb-30 title_color"><% if(editing) { %>Edit Product Description<% } else { %>Add Product description<% } %></h3>
+        <form action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" id="add-form" enctype="multipart/form-data">
+            <div class="mt-10">
+                <label for="title">Title</label>
+                <input type="text" name="title" placeholder="Title" id="title" value="<% if(editing || hasError) { %><%= product.title %><% } %>" class="single-input <%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>">
+            </div>
+            <div class="mt-10">
+                <label for="image">Image URL</label>
+                <input type="file" name="image" id="image" class="single-input">
+                 
+            </div>
+            <div class="mt-10">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" class="single-input <%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>" step="0.01" value="<% if(editing || hasError) { %><%= product.price %><% } %>">
+            </div>
+            <div class="mt-10">
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" value="" id="tags-input" data-role="tagsinput" value="<% if(editing || hasError) { %><%= product.tags %><% } %>" />
+            </div>
+            
+            <div class="mt-10">
+                <label for="description">Description</label>
+                <textarea class="single-textarea <%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>" name="description" id="description" rows="1">
+                    <% if(editing || hasError) { %><%= product.description %><% } %>
+                </textarea>
+            </div>
+            
+            <br>
+            <% if(editing) { %>
+                <input type="hidden" value="<%= product._id %>" name="productId">
+            <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit"><% if(editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+           
+        </form>
+        <% if(errorMessage) { %>
+            <br><br>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+    </div>
+    <div class="col-lg-2 col-md-2"></div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-1.11.2.min.js"
+  integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+  crossorigin="anonymous"></script>
+<script src="/vendors/typeahead/typeahead.js"></script>
+<script src="/vendors/tagsinput/bootstrap-tagsinput.js"></script>
+<!-- <script src="/vendors/tagsinput/bloodhound.js"></script> -->
+<script type="text/javascript">
+    // var request = new XMLHttpRequest();
+    // request.open("GET", "./data/countries.json", false);
+    // request.send(null);
+    // request.onreadystatechange = function() {
+    // if ( request.readyState === 4 && request.status === 200 ) {
+    //     var my_JSON_object = JSON.parse(request.responseText);
+    // }
+    // }
+	var genres = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: {
+		url: 'genre',
+		filter: function(list) {
+		  return $.map(list, function(name) {
+			return { name: name }; });
+		}
+	  }
+	});
+	genres.initialize();
+
+	$('#tags-input').tagsinput({
+	  typeaheadjs: {
+		name: 'genre',
+		displayKey: 'name',
+		valueKey: 'name',
+		source: genres.ttAdapter()
+	  }
+	});
+</script>
+
+<script>
+    var tags=$('#tags-input').text();
+    console.log(tags);
+</script>
+
+<script>
+    $('#add-form').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) { 
+            e.preventDefault();
+            return false;
+    }
+});
+</script>
+
+<%- include('../includes/end.ejs') %>

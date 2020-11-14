@@ -1,0 +1,260 @@
+<%- include('../includes/head.ejs') %>
+  
+   
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+</head>
+
+<body>
+    
+   <%- include('../includes/navigation.ejs') %>
+   <div style="margin-top: 5rem;"></div>
+   <!-- <div class="container-fluid mt-7">
+        <div class="row"> -->
+         
+        <!--================Category Product Area =================-->
+	<section class="cat_product_area section_gap">
+		<div class="container-fluid">
+			<div class="row flex-row-reverse">
+                
+				<div class="col-lg-8">
+					<div class="product_top_bar">
+						<div class="left_dorp">
+							<select class="sorting">
+								<option value="1">Default sorting</option>
+								<option value="2">Default sorting 01</option>
+								<option value="4">Default sorting 02</option>
+							</select>
+							<select class="show">
+								<option value="1">Show 12</option>
+								<option value="2">Show 14</option>
+								<option value="4">Show 16</option>
+							</select>
+                        </div>
+                        
+						<div class="right_page ml-auto">
+							
+						</div>
+                    </div>
+                    <% if (prods.length > 0) { %>
+					<div class="latest_product_inner row">
+                        <% for (let product of prods) { %>
+						<div class="col-lg-3 col-md-3 col-sm-6">
+							<div class="f_p_item">
+                                    <div class="f_p_img">
+                                        <a href="/products/<%= product._id %>">
+                                        <img class="card__image img-fluid" src="/<%= product.imageUrl %>" alt="<%= product.title %>"></a>
+                                        <div class="p_icon">
+                                            <a href="#">
+                                                <i class="lnr lnr-heart"></i>
+                                            </a>
+                                            <% if (userIsLoggedIn) { %>
+                                                <%- include('../includes/add-to-cart.ejs',{prod:product}) %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                               
+								<a href="/products/<%= product._id %>">
+									<h4><%= product.title %></h4>
+								</a>
+								<h5>₹<%= product.price %></h5>
+							</div>
+						</div>
+						<% } %>
+                    </div>
+                    <% } else { %>
+                        <div class="latest_product_inner row">
+                        <h1>Products not found</h1>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" height=200 width=200 src="/<%= author.imageUrl %>" alt="">
+                            <h4><%= author.name %></h4>
+                            <p><%= author.email %></p>
+                            <div class="social_icon">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            
+                            </div>
+                            <p>
+                                <%= author.description %>
+                            </p>
+                            <br>
+                            <% if(userIsLoggedIn) { %>
+                                <% if(current._id.toString()!==author._id.toString()) { %>
+                                <form id="follow">
+                                    <input type="hidden" value="<%= JSON.stringify(author) %>" name="author">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <% if(!following) { %>
+                                        <button type="submit" class="follow-button" id="follow-button">+ Follow</button>
+                                    <% } else { %>
+                                        <button type="submit" class="following-button" id="following-button">Following</button>
+                                    <% } %>
+                                </form>
+                                <% } %>
+                                <br><br>
+                            <% } %>
+                            
+                            <h6><%= author.follow.followers.length %> Followers</h6>
+                            <div class="br"></div>
+                        </aside>
+                        <% if (tags.length > 0) { %> 
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Author Genres</h4>
+                            <ul class="list cat-list">
+                                <% for(let t of tags) { %>
+                                <li>
+                                    <a href="/products/tags/<%= t.tag %>" class="d-flex justify-content-between">
+                                        <p><%= t.tag %></p>
+                                        <!-- <p>37</p> -->
+                                    </a>
+                                </li>
+                                <% } %>
+                            </ul>
+                            <div class="br"></div>
+                        </aside>
+                        <% } %>
+
+                        <% if (events.length > 0) { %> 
+                            <aside class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title">Upcoming events</h4>
+                                <ul class="list cat-list">
+                                    <% for(let event of events) { %>
+                                    <li>
+                                        <a href="/events/<%= event._id %>" class="d-flex justify-content-between">
+                                            <p><%= event.title %></p>
+                                            <!-- <p>37</p> -->
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                                <div class="br"></div>
+                            </aside>
+                            <% } %>
+                        
+                    </div>
+                </div>
+				
+			</div>
+
+			<div class="row">
+				<nav class="cat_page mx-auto" aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item">
+							<a class="page-link" href="#">
+								<i class="fa fa-chevron-left" aria-hidden="true"></i>
+							</a>
+						</li>
+						<li class="page-item active">
+							<a class="page-link" href="#">01</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="#">02</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="#">03</a>
+						</li>
+						<li class="page-item blank">
+							<a class="page-link" href="#">...</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="#">09</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="#">
+								<i class="fa fa-chevron-right" aria-hidden="true"></i>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</section>
+	<!--================End Category Product Area =================-->
+    
+        <!-- </div>
+    </div> -->
+    <div style="margin-bottom: 5rem;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"
+        integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+        },
+        $('#follow').submit(
+            function (e) {
+                e.preventDefault();
+                if ($("#follow-button").text() == "+ Follow") {
+                        console.log("I am here");
+                        fetch('/author-add-follower', {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'csrf-token': document.querySelector('#follow input[name=_csrf]').value
+                            },
+                            method: "POST",
+                            body: JSON.stringify({
+                                author: document.querySelector('#follow input[name=author]').value,
+                            })
+                        }).then((response) => {    
+                            response.json()
+                                .then(data => {
+                                    console.log(data);
+                                    let followButton = document.getElementById("follow-button");
+                                    followButton.remove();
+                                    let followingButton = document.createElement("button");
+                                    followingButton.className = "following-button";
+                                    followingButton.id = "following-button";
+                                    followingButton.innerText = "Following";
+                                    document.getElementById("follow").appendChild(followingButton);
+                            });
+                        });
+
+                }
+                else {
+                    
+                    fetch('/author-remove-follower', {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'csrf-token': document.querySelector('#follow input[name=_csrf]').value
+                            },
+                            method: "POST",
+                            body: JSON.stringify({
+                                author: document.querySelector('#follow input[name=author]').value,
+                            })
+                        }).then((response) => {
+                            
+                            response.json()
+                                .then(data => {
+                                    let followingButton = document.getElementById("following-button");
+                                    followingButton.remove();
+                                    let followButton = document.createElement("button");
+                                    followButton.className = "follow-button";
+                                    followButton.id = "follow-button";
+                                    followButton.innerText = "+ Follow";
+                                    document.getElementById("follow").appendChild(followButton);
+                            });
+                        });
+                }
+            })
+            
+        );
+            
+
+    </script>
+    <%- include('../includes/end.ejs') %>

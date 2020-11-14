@@ -1,0 +1,177 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+        
+        <div style="margin-top:100px"></div>
+        <!--================Blog Area =================-->
+        <section class="blog_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="blog_left_sidebar">
+                            <h2>Your Blogs</h2>
+                            <br>
+                            <% if(blogs.length>0) { %>
+                                <% for(blog of blogs) { %>
+                                <article class="row blog_item">
+                                    <div class="col-md-2">
+                                        <div class="blog_info text-right">
+                                            <div class="post_tag">
+                                                <% for(let tag of blog.tags) { %>
+                                                <a href="#"><%= tag %>,</a>
+                                                <% } %>
+                                            </div>
+                                            <ul class="blog_meta list">
+                                                <li>
+                                                    <a href="/profile/<%= blog.userId._id %>"><%= blog.userId.name %>
+                                                        <i class="lnr lnr-user"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><%= blog.dateString %>
+                                                        <i class="lnr lnr-calendar-full"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><%= blog.views %> Views
+                                                        <i class="lnr lnr-eye"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="blog_post">
+                                            <img src="/<%= blog.imageUrl %>" alt="<%= blog.title %>">
+                                            <div class="blog_details">
+                                                <a href="/blogs/<%= blog._id %>">
+                                                    <h2><%= blog.title %></h2>
+                                                </a>
+                                                <br>
+                                                
+                                                <a href="/blogs/<%= blog._id %>" class="white_bg_btn">View More</a>
+
+                                                <a href="/edit-blog/<%= blog._id %>?edit=true" class="white_bg_btn" style="margin-left: 15px;">Edit</a>
+                                                
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <input type="hidden" value="<%= blog._id %>" name="blogId">
+                                                <button type="submit" onclick="deleteBlog(this)" class="white_bg_btn" style="margin-left: 15px;">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <% } %>
+                            <% } else { %>
+                                <article class="row blog_item">
+                                    <h4>No blogs yet! Start writing...</h4>
+                                    
+                                </article>
+                            <% } %>
+                            <!-- <nav class="blog-pagination justify-content-center d-flex">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a href="#" class="page-link" aria-label="Previous">
+                                            <span aria-hidden="true">
+                                                <span class="lnr lnr-chevron-left"></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">01</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a href="#" class="page-link">02</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">03</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">04</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link">09</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href="#" class="page-link" aria-label="Next">
+                                            <span aria-hidden="true">
+                                                <span class="lnr lnr-chevron-right"></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search Posts">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="lnr lnr-magnifier"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <h3 class="widget_title">Add a Blog</h3>
+                                <p>Join our family and share your views with the world!
+                                </p>
+                                <br>
+                                <a href="/create-blog" class="genric-btn primary-border circle arrow">Create New
+                                    <span class="lnr lnr-arrow-right"></span>
+                                </a>
+                               
+                                <div class="br"></div> 
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <a href="/profile/<%= blog.userId._id %>">
+                                    <img class="author_img rounded-circle" height=100 width=100 src="/<%= user.imageUrl %>"
+                                    alt="">
+                                    <h4><%= user.name %></h4>
+                                </a>
+                                <p>Blogger</p>
+                                <div class="social_icon">
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-behance"></i>
+                                    </a>
+                                </div>
+                                <p><%= user.description %>
+                                </p>
+                                <div class="br"></div>
+                            </aside>
+                            
+                            <aside class="single-sidebar-widget tag_cloud_widget">
+                                <h4 class="widget_title">Tag Clouds</h4>
+                                <ul class="list">
+                                    <% for(bt of blogtags) { %>
+                                        <li>
+                                            <a href="/blogs/tags/<%= bt.tag %>"><%= bt.tag %></a>
+                                        </li>
+                                    <% } %>
+                                    
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+<%- include('../includes/end.ejs') %>
+<script src="/js/myblog.js"></script>

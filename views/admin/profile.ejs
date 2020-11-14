@@ -1,0 +1,164 @@
+<%- include('../includes/head.ejs') %>
+  
+    <link rel="stylesheet" href="/css/profile.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+</head>
+
+<body>
+    
+   <%- include('../includes/navigation.ejs') %>
+   <div style="margin-top: 10rem;"></div>
+   <div class="container-fluid mt-7">
+    <div class="row">
+    <div class="col-lg-4">
+    <div class="blog_right_sidebar">
+        
+        <aside class="single_sidebar_widget author_widget">
+            <img class="author_img rounded-circle" height=200 width=200 src="/<%= author.imageUrl %>" alt="">
+            <h4><%= author.name %></h4>
+            <p><%= author.email %></p>
+            <div class="social_icon">
+                <a href="#">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#">
+                    <i class="fa fa-instagram"></i>
+                </a>
+               
+            </div>
+            <p>
+                <%= author.description %>
+            </p>
+            <div class="br"></div>
+        </aside>
+        <% if(tags) { %>
+        <% if(tags.length>0) { %>
+        <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Your Genres</h4>
+            <ul class="list cat-list">
+                <% for(let t of tags) { %>
+                <li>
+                    <a href="#" class="d-flex justify-content-between">
+                        <p><%= t.tag %></p>
+                        <!-- <p>37</p> -->
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+            <div class="br"></div>
+        </aside>
+        <% } %>
+        <% } %>
+        
+        
+    </div>
+    </div>
+
+    <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">My account</h3>
+              </div>
+              <div class="col-4 text-right">
+                <a href="#!" class="btn btn-sm btn-primary">Save Profile</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form method="post" action="/admin/profile" enctype="multipart/form-data">
+              <h6 class="heading-small text-muted mb-4">User information</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-email">Email address</label>
+                      <input type="email" id="email" name="email" class="form-control form-control-alternative" value="<%= author.email %>">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-first-name">Name</label>
+                      <input type="text" id="name" name="name" class="form-control form-control-alternative" placeholder="First name" value="<%= author.name %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-last-name">Image</label>
+                      <input type="file" id="image" name="image" class="form-control form-control-alternative">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              <!-- Address -->
+              <h6 class="heading-small text-muted mb-4">Contact information</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address">Address</label>
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-city">City</label>
+                      <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-country">Country</label>
+                      <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-country">Postal code</label>
+                      <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              <!-- Description -->
+              <h6 class="heading-small text-muted mb-4">About me</h6>
+              <div class="pl-lg-4">
+                <div class="form-group focused">
+                  <label>About Me</label>
+                  <textarea rows="4" name="description" class="form-control form-control-alternative" placeholder="A few words about you ..."><%= author.description %></textarea>
+                </div>
+              </div>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" value="<%= author._id %>" name="authorId">
+              <div class="col-8 text-center">
+                <button type="submit" class="btn btn-sm btn-primary">Save Profile</button>
+              </div>
+            </form>
+            <% if(errorMessage) { %>
+              <br><br>
+              <div class="user-message user-message--error"><%= errorMessage %></div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <br><br>
+
+
+  
+ 
+
+<%- include('../includes/end.ejs') %>

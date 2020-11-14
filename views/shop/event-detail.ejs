@@ -1,0 +1,123 @@
+<%- include('../includes/head.ejs') %>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <section class="blog_area single-post-area p_120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="feature-img">
+                        <img class="img-fluid" src="/<%= event.imageUrl %>" alt="">
+                    </div>
+                    <br><br>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="row event-details">
+                                    <i class='fas fa-map-marker-alt' style='font-size:42px;color:rgb(56, 39, 23)'></i>
+                                    <h3 style="margin-left: 5%;"><%= event.location %></h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="row event-details">
+                                    <i class="fa fa-calendar" style='font-size:42px;color:rgb(56, 39, 23)' aria-hidden="true"></i>
+                                    <h3 style="margin-left: 5%;"><%= event.date.toDateString() %></h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="row event-details">
+                                    <i class="fa fa-clock-o" style='font-size:42px;color:rgb(56, 39, 23)' aria-hidden="true"></i>
+                                    <h3 style="margin-left: 5%;"><%= event.startTime %>-<%= event.endTime %></h3>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+                <div class="br"></div>
+                <div class="col-lg-8 col-md-8 event_details">
+                    <h2> <%= event.title %></h2>
+                       
+                    <p class="excert">
+                        <%= event.description %>
+                    </p>
+
+                    <div class="container">
+                        <div class="row">
+                            <i class='fas fa-thumbtack' style='font-size:24px;color:rgb(56, 39, 23)'></i>
+                           <h5 style="margin-left: 3%;"> <a href="<%= event.link %>"><%= event.link %></a></h5>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="single-post-area">
+                        <h3>Share</h3>
+                        <ul class="social-links">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-behance"></i>
+                                </a>
+                            </li>
+                        </ul>
+    
+                    </div>
+                   
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        
+                        <aside class="single_sidebar_widget author_widget">
+                            <h3 class="widget_title">Main Speaker</h3>
+                            <a href="/authors/<%= event.authorId._id %>">
+                                <img class="author_img rounded-circle" height=150 width=150 src="/<%= event.authorId.imageUrl %>"
+                                alt="">
+                                <h4><%= event.authorId.name %></h4>
+                            </a>
+                            
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Other speakers</h4>
+                            <ul class="list cat-list">
+                                <% if(event.speakerName1.length>0) { %>
+                                <li>
+                                    <a href="#" class="d-flex justify-content-between">
+                                        <p><%= event.speakerName1 %></p>
+                                        
+                                    </a>
+                                </li>
+                                <% } %>
+                            </ul>
+                            
+                        </aside>
+                        
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
+
+
+
+<%- include('../includes/end.ejs') %>

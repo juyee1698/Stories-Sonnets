@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    
+<%- include('../includes/navigation.ejs') %>
+<div style="margin-top: 3rem;"></div>
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <% if(events.length>0) { %>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Your Events</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let event of events) { %>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="/<%= event.imageUrl %>" alt="" width="150" length="100">
+                                    </div>
+                                    <div class="media-body">
+                                        <a href="/events/<%= event._id %>"><p><%= event.title %></p></a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5><%= event.location %></h5>
+                            </td>
+                            
+                            <td>
+                                <h5><%= event.date.toDateString() %></h5>
+                            </td>
+                        </tr>
+                        <% } %>
+                        
+                       
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <div class="container" style="height:12rem;">
+                        <h3>No events...Host an event to get in touch with your readers</h3>
+                    </div>
+                    
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+
+<%- include('../includes/end.ejs') %>

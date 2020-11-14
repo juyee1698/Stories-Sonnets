@@ -1,0 +1,78 @@
+<%- include('../includes/head.ejs') %>
+    <!-- <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css"> -->
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <!--================Home Banner Area =================-->
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+                    <h2>Signup as a Seller</h2>
+                    <h5>Let us help you connect you to your readers and boost your writing career</h5>
+					<div class="page_link">
+						<a href="#" class="genric-btn primary circle arrow">Learn More
+                            <span class="lnr lnr-arrow-right"></span>
+                        </a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+    <!--================Login Box Area =================-->
+	<section class="login_box_area p_120">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="img/breadcrumb/book.jpg" alt="">
+						<div class="hover">
+							<h4>Already have an account?</h4>
+							<a class="main_btn" href="/seller-login">Login</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner reg_form">
+						<h3>Create an Account</h3>
+						<form class="row login_form" action="/seller-signup" method="post" >
+							<div class="col-md-12 form-group">
+                                <input class="form-control" type="text" name="name" id="name" value="<%= oldInput.name %>" placeholder="Name">
+								<!-- <input type="text" class="form-control" id="name" name="name" placeholder="Name"> -->
+							</div>
+							<div class="col-md-12 form-group">
+                                <input class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" type="email" name="email" id="email" value="<%= oldInput.email %>" placeholder="Email Address" novalidate>
+								<!-- <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"> -->
+							</div>
+							<div class="col-md-12 form-group">
+                                <input class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" id="password" value="<%= oldInput.password %>" placeholder="Password">
+								<!-- <input type="text" class="form-control" id="password" name="password" placeholder="Password"> -->
+							</div>
+							<div class="col-md-12 form-group">
+                                <input class="form-control <%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>" type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword%>" placeholder="Confirm password">
+								<!-- <input type="password" class="form-control" id="pass" name="pass" placeholder="Confirm password"> -->
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="creat_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">Keep me logged in</label>
+								</div>
+                            </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="btn submit_btn">Register</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+<%- include('../includes/end.ejs') %>

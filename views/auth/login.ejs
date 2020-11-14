@@ -1,0 +1,76 @@
+<%- include('../includes/head.ejs') %>
+
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <!-- <main>
+        <form class="login-form" action="/login" method="POST">
+            <h2>Login Form</h2>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" type="email" name="email" id="email" value="<%= oldInput.email %>">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" id="password" value="<%= oldInput.password %>">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit">Login</button>
+            <div class="form-control">
+                <a href="/reset">Reset Password</a>
+            </div>
+        </form> -->
+        
+    <!-- </main> -->
+    <!--================Login Box Area =================-->
+	<section class="login_box_area p_120">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="img/books/read-book.jpg" alt="">
+						<div class="hover">
+							<h4>New to our website?</h4>
+							<a class="main_btn" href="/signup">Create an Account</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>Log in to enter</h3>
+						<form class="row login_form" action="/login" method="POST">
+							<div class="col-md-12 form-group">
+                                <input class="form-control <%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>" type="email" name="email" id="email" value="<%= oldInput.email %>" placeholder="Email">
+								<!-- <input type="text" class="form-control" id="name" name="name" placeholder="Username"> -->
+							</div>
+							<div class="col-md-12 form-group">
+                                <input class="form-control <%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>" type="password" name="password" id="password" value="<%= oldInput.password %>" placeholder="Password">
+								<!-- <input type="text" class="form-control" id="name" name="name" placeholder="Password"> -->
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="creat_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">Keep me logged in</label>
+								</div>
+                            </div>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="btn submit_btn">Log In</button>
+								<a href="/reset">Forgot Password?</a>
+							</div>
+                        </form>
+                        <% if(errorMessage) { %>
+                            <br><br>
+                            <div class="user-message user-message--error"><%= errorMessage %></div>
+                        <% } %>
+                    </div>
+                    
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+<%- include('../includes/end.ejs') %>

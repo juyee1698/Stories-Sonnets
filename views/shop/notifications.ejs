@@ -1,0 +1,90 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div style="margin-top:10rem"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 col-md-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Your Blogs</strong>
+                    </div>
+                    <% if(notifications.comments.length>0) { %>
+                    <div class="card-body">
+                        <% for(let comment of notifications.comments) { %>
+                        <article>
+                        <a href="/blogs/<%= comment.blogId._id %>"><div id="notif" class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+                            <span class="badge badge-pill badge-primary">Comment</span>
+                            <%= comment.commentorId.name %> commented on your blog <%= comment.blogId.title %>
+                        </a>
+                            
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="commentId" value="<%= comment._id %>">
+                            <button type="submit" onclick="deleteCommentNotif(this)" class="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            
+                        </div>
+                        <% } %>
+                    </article>
+                         
+                    </div>
+                    <% } else { %>
+                    <div class="card-body">
+                        <div class="alert alert-warning" role="alert">
+                            You have no notifications!
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+                <br>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Your Followers' Activity</strong>
+                    </div>
+                    <% if(notifications.blogs.length>0) { %>
+                    <div class="card-body">
+                        <% for(let blog of notifications.blogs) { %>
+                        <article>
+                            <a href="/blogs/<%= blog.blogId._id %>"><div class="sufee-alert alert with-close alert-info alert-dismissible fade show">
+                            <span class="badge badge-pill badge-info">Blog</span>
+                            <%= blog.bloggerId.name %> has posted a new blog <%= blog.blogId.title %>
+                        </a>
+                           
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="blogId" value="<%= blog._id %>">
+                                <button type="submit" onclick="deleteBlogNotif(this)" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            
+                        </div>
+                        </article>
+                        <% } %>
+                        
+                    </div>
+                    <% } else { %>
+                    <div class="card-body">
+                        <div class="alert alert-warning" role="alert">
+                            No recent activity
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="col-lg-1 col-md-1"></div>
+        </div>
+    </div>
+    
+    <div style="margin-bottom:10rem"></div>
+    
+    
+    
+<script src="/js/blognotif.js"></script>
+<script src="/js/commentnotif.js"></script>
+<%- include('../includes/end.ejs') %>

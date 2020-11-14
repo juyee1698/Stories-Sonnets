@@ -1,0 +1,115 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+
+</head>
+<body  > 
+    <%- include('../includes/navigation.ejs') %>
+    <div style="margin-top:100px"></div>
+    <div class="container-fluid mt-7">
+        <div class="row">
+            <div class="col-lg-8">
+                <section class="product_description_area" style="margin-top: 0;">
+                    <% if(discussions.length>0) { %>
+                    <div class="review_list" id="reviewList">
+                        <a class="btn" href="/create-discussion">+ Start a new discussion</a>
+                        
+                        <div class="br"></div>
+                        <% for(let discussion of discussions) { %>
+                        
+                        <div class="review_item" id="displayDiscussions">
+                            <div class="media">
+                                <% if(discussion.bookExists) { %>
+                                <a href="/products/<%= discussion.bookId._id %>">
+                                    <div class="d-flex review__image">    
+                                            <img src="/<%= discussion.bookId.imageUrl %>" alt="post">
+                                    </div>
+                                </a>
+                                <% } else { %>
+                                    <a href="/profile/<%= discussion.userId._id %>">
+                                        <div class="d-flex">    
+                                                <img class="author_img rounded-circle" width="70" height="70" src="/<%= discussion.userId.imageUrl %>" alt="post">
+                                        </div>
+                                    </a>
+                                <% } %>
+                                <div class="media post_item">    
+                                    <a href="/discussions/<%= discussion._id %>">
+                                        <div class="media-body" style="padding-left: 25px;">  
+                                        
+                                            <h3 style="color: rgb(88, 57, 28);"><%= discussion.title %></h3>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <p><%= discussion.date.toDateString()+" "+discussion.date.getHours()+":"+discussion.date.getMinutes() %></p>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <p>Started by <%= discussion.userId.name %></p>
+                                                </div>
+                                                <div class="col-lg-2" style="margin-top: 10px;">
+                                                    <span><i class="lnr lnr-eye"></i> <%= discussion.views %> views</span>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </a>
+                                </div>
+                                
+                            </div>
+                            <div class="br"></div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <% } else { %>
+                    <div class="review_list" id="noReviews">
+                        <div class="review_item">
+                            <h3>No discussions yet...</h3>
+                        </div>
+                    </div>
+                    <% } %>
+
+                    <nav class="blog-pagination justify-content-center d-flex">
+                       
+                        <%- include('../includes/pagination.ejs'),{current:current,nextPage:nextPage,PreviousPage:PreviousPage,hasPreviousPage:hasPreviousPage,hasNextPage:hasNextPage,lastPage:lastPage} %>
+                    </nav>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">Popular Forums</h4>
+                        <ul class="list cat-list"> 
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Word Game on Divergent series</p>
+                                    <p>250</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Fangirling over Jace from Mortal Instruments</p>
+                                    <p>37</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Elliot Wake's writing style</p>
+                                    <p>21</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex justify-content-between">
+                                    <p>Virginia Woolf or Slyvia Plath? and Why?</p>
+                                    <p>31</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="br"></div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../includes/end.ejs') %>

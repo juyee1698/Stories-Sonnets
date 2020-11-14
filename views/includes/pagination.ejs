@@ -1,0 +1,51 @@
+<div class="row">
+    <nav class="cat_page mx-auto" aria-label="Page navigation example">
+        <ul class="pagination">
+                <li class="page-item active">
+                <a class="page-link" href="?page=<%= current==1?current:prev %>">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                </li>
+            
+            <% if(current!=1 && PreviousPage!=1) { %>
+                <li class="page-item active">
+                    <a class="page-link" href="?page=1">1</a>
+                </li>
+                <!-- <a href="?page=1">1</a> -->
+            <% } %>
+            <% if(hasPreviousPage) { %>
+                <li class="page-item active">
+                    <a class="page-link" href="?page=<%= PreviousPage %>"><%= PreviousPage %></a>
+                </li>
+                <!-- <a href="?page=<%= PreviousPage %>"><%= PreviousPage %></a> -->
+            <% } %>
+            <li class="page-item active">
+                <a class="page-link" href="?page=<%= current %>"><%= current %></a>
+            </li>
+            <!-- <a href="?page=<%= current %>" class="active"><%= current %></a> -->
+            <% if(hasNextPage) { %>
+                <li class="page-item active">
+                    <a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a>
+                </li>
+                <!-- <a href="?page=<%= nextPage %>"><%= nextPage %></a> -->
+            <% } %>
+            <% if(lastPage!==current && nextPage!==lastPage) { %>
+            <li class="page-item blank">
+                <a class="page-link" href="#">...</a>
+            </li>
+            
+                <li class="page-item active">
+                    <a class="page-link" href="?page=<%= lastPage %>"><%= lastPage %></a>
+                </li>
+            <!-- <a href="?page=<%= lastPage %>"><%= lastPage %></a> -->
+            <% } %>
+            
+                <li class="page-item active">
+                    <a class="page-link" href="?page=<%=  current==lastPage?current:next %>">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+           
+        </ul>
+    </nav>
+</div>

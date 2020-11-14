@@ -1,0 +1,2219 @@
+/*
+Theme Name: Kalium - Bookstore Theme
+Theme URI: https://laborator.co/themes/kalium/
+Author: Laborator
+Author URI: https://laborator.co/
+Description: Start creating that amazing website that you have always wanted, only with Kalium — Connect with Laborator:  <a href="https://themeforest.net/user/laborator">Envato</a>, <a href="https://twitter.com/thelaborator">Twitter</a> or <a href="https://www.facebook.com/laboratorcreative">Facebook</a>.
+Version: 1.0
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Template: kalium
+Text Domain: kalium
+*/
+/* ===========================================================
+Custom modification only for BOOKSTORE Demo - START
+=========================================================== */
+
+/* Header: Border Bottom */
+.main-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+/* Shop: Page title spacing */
+.woocommerce .woocommerce-shop-header--columned { 
+	margin: 45px 0;
+}
+/* Shop: My Account container spacing */
+body.woocommerce-account .default-margin>.woocommerce {
+    margin-bottom: 30px;
+    padding: 45px 0;
+}
+
+/* Header: Hide border bottom when sticky menu is active */
+header.main-header.is-sticky.sticky-initialized.sticky-active.sticky-fully-hidden {
+	border-bottom: 1px transparent;
+}
+
+/* Menu: Standard menu sub-menu background */
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark div.menu>ul ul, 
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark ul.menu ul {
+    background-color: #f3f0ef;
+    border: 5px solid #FFF;
+    -webkit-box-shadow: 0 0 0 1px #c3c3c3;
+            box-shadow: 0 0 0 1px #c3c3c3;
+}
+
+/* Menu: Standard menu sub-menu item transition */
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark ul.menu ul li a, 
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark div.menu > ul ul li a {
+    color: #76323f;
+	-webkit-transition-duration: 200ms;
+	     -o-transition-duration: 200ms;
+	        transition-duration: 200ms;
+}
+
+/* Menu: Standard menu sub-menu item transition */
+.main-header.menu-type-standard-menu .standard-menu-container div.menu>ul>li>ul li, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu>li>ul li {
+    padding: 10px 0px;	
+    color: #76323f;
+    border-bottom: 1px solid #d7cec7;
+    line-height: 1;
+    margin-top: 0px;
+}
+
+/* Menu: Standard menu sub-menu first item remove padding */
+.main-header.menu-type-standard-menu .standard-menu-container div.menu>ul>li>ul li:first-child, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu>li>ul li:first-child {
+    padding-top: 0px;
+}
+
+/* Menu: Standard menu sub-menu last item remove padding */
+.main-header.menu-type-standard-menu .standard-menu-container div.menu>ul>li>ul li:last-child, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu>li>ul li:last-child {
+    padding-bottom: 0px;
+}
+
+
+/* Menu: Standard menu sub-menu first item remove bottom border */
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu ul li:last-child, 
+.main-header.menu-type-standard-menu .standard-menu-container div.menu > ul li:last-child {
+    border-bottom: 0;
+}
+
+/* Menu: Standard menu sub-menu caret color */
+.main-header.menu-type-standard-menu .standard-menu-container div.menu > ul ul li.menu-item-has-children:before, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu ul li.menu-item-has-children:before {
+    border-color: transparent transparent transparent #222;
+    
+}
+
+/* Menu: Standard menu active item color */
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu li.current_page_ancestor a, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu li.current_page_parent a, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu li.current-menu-parent a, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu li.current-menu-item a, 
+.main-header.menu-type-standard-menu .standard-menu-container div.menu > li.current-menu-item a {
+    color: #76323f;
+}
+
+/* Menu: Standard menu sub-menu minimum width */
+.main-header.menu-type-standard-menu .standard-menu-container div.menu>ul ul, 
+.main-header.menu-type-standard-menu .standard-menu-container ul.menu ul {
+	min-width: 240px;
+}
+
+/* Menu: Standard menu link color on hover */
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark div.menu>ul>li>a:hover, 
+.main-header.menu-type-standard-menu .standard-menu-container.menu-skin-dark ul.menu>li>a:hover {
+    color: #76323f;
+}
+
+/* Menu: Search field background */
+.header-search-input .search-field {
+    background-color: #f3f0ef;
+}
+
+/* Multiple Areas: Removes the Underline Animation in Theme Links */
+.site-footer a:after, 
+.blog-posts .post-item .post-details .post-title a:after, 
+.single-post .post .post-meta a:hover:after,
+.wrapper a:after, 
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-content-container .blog-post-title a:after, 
+body a:after {
+	display: none;
+}
+
+/* Multiple Areas: Link Hover Color */
+.blog-posts .post-item .post-details .post-title a:hover, 
+.single-post .post .post-meta a:hover,  
+.wrapper a:hover,
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-content-container .blog-post-title a:hover {
+	color: #222;
+}
+
+/* Slider: Disable border on videos */
+.rev_slider iframe {
+      border: 0 !important;
+}
+
+/* Inputs: Checkbox and radio background */
+input[type=checkbox], input[type=radio] {
+    -webkit-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+    background: #f3f0ef;
+    border: none;
+	border-radius: 3px;
+}
+
+/* Button: Text color  */
+.wrapper .button:hover {
+    color: #fff;
+}
+
+/* Button: Text color on hover  */
+.wrapper .button.add_to_cart_button:hover {
+    color: #222;
+}
+
+/* Secondary Button: Background and text color  */
+.wrapper .button.button-secondary:hover {
+	color: #222;	
+    background-color: #ece6e4;	
+}
+
+/* Social Netrworks: Size and border radius */
+.social-networks.rounded li a {
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+}
+
+/* Homepage: Books padding */
+.home-books {
+	padding-top: 35px;
+}	
+
+/* Homepage: Tabs margin left 1px */
+.wpb-js-composer .home-tabs-books.vc_tta-controls-align-right.vc_tta-tabs.vc_tta-tabs-position-top .vc_tta-tabs-container .vc_tta-tab {
+  	margin-left: 1px !important;
+}
+
+/* Homepage: Tabs background and padding */
+.wpb-js-composer .home-tabs-books.vc_tta-controls-align-right.vc_tta-tabs.vc_tta-tabs-position-top .vc_tta-tabs-container .vc_tta-tab a  {
+    background-color: #f3f0ef;
+    padding: 5px 10px;
+	color: #666;
+}
+
+/* Homepage: Tabs active background */
+.wpb-js-composer .home-tabs-books.vc_tta-controls-align-right.vc_tta-tabs.vc_tta-tabs-position-top .vc_tta-tabs-container .vc_tta-tab.vc_active a {
+    background-color: #eae6e5;
+	color: #222;
+}
+
+
+/* Homepage: Tabs position */
+.wpb-js-composer .home-tabs-books.vc_tta-controls-align-right.vc_tta-tabs.vc_tta-tabs-position-top .vc_tta-tabs-container {
+    position: absolute;
+    top: 20px;
+	right: 0;
+}
+
+/* Homepage: News remove post border */
+.wpb_wrapper .lab-blog-posts .blog-post-entry {
+	border: none;
+}
+
+/* Homepage: Hide box shadow  */
+.home .wpb_wrapper .lab-blog-posts .blog-post-entry:hover {
+    box-shadow: none;
+}
+
+/* Homepage: News add post spacing */
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-content-container {
+	padding: 30px 20px;
+}
+
+/* Homepage: News add post spacing on left image layout */
+.wpb_wrapper .lab-blog-posts.posts-layout-left .blog-post-entry .blog-post-content-container {
+	padding: 20px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+/* Homepage: News title bottom margin and line height */
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-content-container .blog-post-title {
+	margin-bottom: 0px;
+	line-height: 1.3;
+}
+
+/* Homepage: Special Offer */
+.special-offer {
+  padding: 45px 0;
+}
+
+/* Homepage: Shop categories */
+.home .woocommerce .products.shop-categories {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+/* Homepage: Products remove top padding */
+.home .wpb_wrapper .woocommerce .products {
+	padding-top: 0px;
+}
+
+/* Homepage: Posts Transition */
+.wpb_wrapper .lab-blog-posts .blog-post-entry {
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/* Homepage: Posts box shadow */
+.wpb_wrapper .lab-blog-posts .blog-post-entry:hover {
+    -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+}
+
+/* Homepage: Featured book right padding */
+.homepage-featured-book {
+	padding-right: 60px;
+}
+
+/* Homepage: Blog Posts and Departments More Button */
+.more-link {
+	border: none;
+	top: 0px;
+	right: 0px;
+	position: absolute;
+}
+
+/* Homepage: Blog Posts See More Button Border */
+.show-more .reveal-button {
+	min-width: 150px;
+	border: none;
+}
+
+/* Homepage: Blog Posts See More Button Spacing */
+.more-link .show-more {
+	padding:0px;
+	margin: 0px;
+	margin-top: 35px;
+}
+
+/* Homepage: Blog Posts See More Button Border Color */
+.more-link .show-more .reveal-button a {
+	line-height: 1;
+}
+
+/* Homepage: Blog Posts See More Button Arrow */
+.more-link .show-more .reveal-button a:before {
+	margin-left: 10px;
+	float: right;
+	line-height : 1;
+}
+
+/* Homepage: Subscribe */
+.subscribe-form {
+  display: flex;
+}
+
+/* Homepage: Subscribe checkbox background */
+.subscribe-agree-terms input[type=checkbox] {
+	background: #e8e3e2;
+	border-radius: 3px;
+}
+
+/* Homepage: Subscribe input */
+.subscribe-form .form-group {
+	background: #e8e3e2;
+	width: 80%;
+	margin-bottom: 0px;
+	margin-right: 20px;
+	padding: 5px 15px;
+    -webkit-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+/* Homepage: Subscribe button */
+.subscribe-form .submit {
+    width: 20%;
+	border-radius: 3px;
+}
+
+/* Homepage: Subscribe terms top margin */
+.subscribe-agree-terms {
+	margin-top: 15px;
+}
+
+/* Homepage: Subscribe input padding on sides */
+.subscribe-form input {
+	padding-left: 0px;  
+	padding-right: 0px;  
+}
+
+/* Homepage: Products remove bottom margin  */
+.home .wpb_wrapper .woocommerce .products {
+	margin-bottom: 0px;
+}
+
+/* Homepage: Products remove padding  */
+.wpb-js-composer .vc_tta.vc_general.home-tabs-books .vc_tta-panel.vc_active .vc_tta-panel-body {
+	padding: 0px;
+	overflow: visible;
+}
+
+/* Homepage: Products remove bottom margin  */
+.home .woocommerce .products .product .item-info {
+    margin-bottom: 0px;
+}
+
+/* Homepage: Products remove bottom margin  */
+.home.wpb-js-composer .vc_tta-container {
+	margin-bottom: 0px;
+}
+
+/* Homepage: Events padding  */
+.home .portfolio-title-holder {
+	padding: 35px 0 20px 0;
+}
+
+/* Homepage: Selected book hide parts  */
+.home .single-product .share-product-container,
+.home .wpb_wrapper .woocommerce .products.related,
+.home .single-product .woocommerce-tabs {
+  display: none;
+}
+
+/* Homepage: Selected book text color  */
+.home .single-product .woocommerce-grouped-product-list .woocommerce-grouped-product-list-item__price ins .amount, 
+.home .single-product .woocommerce-grouped-product-list .woocommerce-grouped-product-list-item__price > .amount, 
+.home .single-product .summary > .price, 
+.home .single-product .summary .single_variation_wrap .single_variation,.home .single-product .summary .product_meta a,
+.home .single-product .summary p.price>.amount,
+.home .single-product .select-option-ui span,
+.home .single-product .summary .product_title {
+    color: #FFF;
+}
+
+
+/* Homepage: Selected book text color */
+.home .single-product .summary .product_meta .shop_attributes th,
+.home .single-product .summary .single_variation_wrap .single_variation del, 
+.home .single-product .summary p.price del,
+.home .single-product .select-option-ui i:before,
+.home .single-product .summary .variations .reset_variations,
+.home .single-product .summary .variations .label label,
+.home .single-product .summary .product_meta,
+.home .single-product .summary p {
+    color: rgba(255,255,255,0.65);
+}
+
+/* Homepage: Selected book add colon after author */
+.woocommerce .summary .product_meta .shop_attributes th:after {
+	content: ":";
+}
+
+/* Homepage: Selected book button background */
+.home .single-product .button {
+    background-color: #642a35;
+}
+
+/* Homepage: Selected book spacing  */
+.home-book-of-month {
+  padding: 10px 0px 50px 0px;
+}
+
+/* Homepage: Selected book spacing  */
+.home .single-product--product-details>.product .summary {
+    padding: 15px 40px;		
+}
+
+/* Homepage: Author of the month title margin  */
+.home .section-title.author-page-title {
+	margin-bottom: 25px;
+}
+
+/* Shop: Books line height */
+.woocommerce .products .product .item-info h3 a, 
+.woocommerce .products .product .item-info h3 a {
+    line-height: 1.3;
+}
+
+/* Shop: Remove background */
+.woocommerce {
+    background: transparent;
+}
+
+/* Shop: Product center title  */
+.woocommerce .products .product .item-info .item-info-row {
+	display: block;
+	text-align: center;
+}
+
+/* Shop: Product center author  */
+.woocommerce .products .product .item-info .item-info-row .shop_attributes {
+	margin: 0 auto;
+}
+
+/* Shop: Product author color full background layout  */
+.woocommerce .products .product.catalog-layout-full-bg .item-info .shop_attributes a {
+	color: rgba(255,255,255,0.5);
+}
+
+/* Shop: Product show add to cart always  */
+.woocommerce .products .product .item-info .product-loop-add-to-cart-container .product-terms.category-hoverable+.add-to-cart-link {
+	position: relative;
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Shop: Product price top margin  */
+.woocommerce .products .product .item-info .price {
+	margin-top: 10px;
+}
+
+/* Shop: Product title bottom margin  */
+.woocommerce .products .product .item-info h3 {
+	margin-bottom: 5px;
+}
+
+.woocommerce .products .product .item-info .product-loop-add-to-cart-container .product-terms.category-hoverable {
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.woocommerce .products .product.hover.catalog-layout-default .item-info .product-loop-add-to-cart-container .product-terms.category-hoverable {
+    visibility: visible;
+    opacity: 1;  
+}
+
+/* Shop: Product image shadow  */
+.woocommerce .products .product .product-images {
+	-webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+/* Shop: Product image shadow on hover  */
+.woocommerce .products .product .product-images:hover {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);  
+}
+
+/* Shop: Hide product author label */
+.woocommerce .products .product .item-info .shop_attributes th {
+	display: none;
+}  
+
+/* Shop: Product author text color */
+.woocommerce .products .product .item-info .item-info-row table td a {
+    color: #7d7770;
+}
+
+/* Shop: Product author underline  */
+.woocommerce .products .product .item-info a:after {
+	left: 50%;
+	background: #CCC;
+	display: block;
+}
+
+/* Shop: Product author underline  */
+.woocommerce .products .product .item-info a:hover:after {
+	left: 0%;
+}
+
+/* Shop: Product author underline on hover */
+.woocommerce .single-product--product-details>.product .summary {
+	padding-top: 30px;
+}
+
+/* Shop: Sale ribbon */
+.woocommerce .onsale {
+	top: 20px;
+	right: 45px;
+	background: #76323f;
+	width: 40px;
+	height: 80px;
+	line-height: 40px;
+	padding: 0px;
+	border-radius: 0;
+	-webkit-writing-mode: vertical-rl;
+	  -ms-writing-mode: tb-rl;
+	      writing-mode: vertical-rl;
+	overflow: visible;
+	-webkit-box-shadow: 0px 3px 15px -5px rgba(0,0,0,0.5);
+	      box-shadow: 0px 3px 15px -5px rgba(0,0,0,0.5);
+}
+
+/* Shop: Sale ribbon background */
+.woocommerce .onsale:before{
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 20px solid #76323f;
+	border-right: 20px solid transparent;
+}
+
+/* Shop: Sale ribbon bacgkround */
+.woocommerce .onsale:after{
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-top: 20px solid #76323f;
+	border-left: 20px solid transparent;
+}
+
+/* Shop: Out of stock ribbon bacgkround */
+.woocommerce .onsale.oos {
+	height: 120px;
+	line-height: 40px;
+}
+
+/* Shop: Out of stock ribbon bacgkround */
+.woocommerce .onsale.oos:before {
+	border-top: 20px solid #222;
+	border-right: 20px solid transparent;
+}
+
+/* Shop: Out of stock ribbon bacgkround */
+.woocommerce .onsale.oos:after {
+	border-top: 20px solid #222;
+	border-left: 20px solid transparent;
+}
+
+/* Shop: Featured ribbon  */
+.woocommerce .onsale.featured {
+	height: 120px;
+	line-height: 40px;
+}
+
+/* Shop: Featured ribbon background */
+.woocommerce .onsale.featured:before {
+	border-top: 20px solid #888;
+	border-right: 20px solid transparent;
+}
+
+/* Shop: Featured ribbon background */
+.woocommerce .onsale.featured:after {
+	border-top: 20px solid #888;
+	border-left: 20px solid transparent;
+}
+
+/* Shop: Categories per row */
+.woocommerce .products.shop-categories .product-category {
+	width: 10%;
+}
+
+/* Shop: Category clear none */
+.woocommerce .products.shop-categories .product-category:nth-of-type(6n+1) {
+	clear: none;
+}
+
+/* Shop: Category titles */
+.woocommerce .shop-categories .product-category .woocommerce-loop-category__title, 
+.woocommerce .shop-categories .product-category h3 {
+    letter-spacing: 1px;
+}
+
+/* Shop: Category bottom padding */
+.woocommerce .products.shop-categories {
+	padding-bottom: 25px;
+}
+
+/* Shop: Category titles */
+.woocommerce .shop-categories .product-category .woocommerce-loop-category__title, 
+.woocommerce .shop-categories .product-category h3 {
+	position: relative;
+	padding: 0px;
+    margin-top: 20px;
+    text-align: center;
+	background: transparent;
+}
+
+/* Shop: Category remove count from titles */
+.woocommerce .shop-categories .product-category .woocommerce-loop-category__title .count, 
+.woocommerce .shop-categories .product-category h3 .count {
+	display: none;
+}
+
+/* Shop: Category image styling */
+.woocommerce .shop-categories .product-category img {
+    border-radius: 50%;
+    background-color: #76323f;
+    padding: 8px;
+	border: 5px solid #FFF;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+/* Shop: Category image on hover */
+.woocommerce .shop-categories .product-category:hover img {
+	background-color: #58252f;
+	-webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+	        box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+}  
+
+/* Shop: Category image transparent image placeholder */
+.woocommerce .products.shop-categories .product-category span.image-placeholder {
+  background-color: transparent !important;
+}
+
+/* Shop: Default Sorting */
+.woocommerce .woocommerce-shop-header--sorting .woocommerce-ordering .dropdown-menu {
+    border: 5px solid #FFF;
+    -webkit-box-shadow: 0 0 0 1px #c3c3c3;
+            box-shadow: 0 0 0 1px #c3c3c3;
+}
+
+/* Shop: Distanced layout center title */
+.woocommerce .products .product.catalog-layout-distanced-centered .item-info .shop_attributes  {
+    margin: 0 auto;
+}
+
+/* Shop: Minimal layout background */
+.woocommerce .products .product.catalog-layout-transparent-bg .product-internal-info {
+    background: -webkit-linear-gradient(top, rgb(0, 0, 0) 0%,rgba(255,255,255,1) 35%,rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.75)),color-stop(30%, rgba(0, 0, 0, 0.5)),to(rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%,rgba(0, 0, 0, 0.5) 30%,rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.75) 0%,rgba(0, 0, 0, 0.5) 30%,rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%,rgba(0, 0, 0, 0.5) 30%,rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+}
+
+/* Shop: Minimal layout background on hover */
+.woocommerce .products .product.catalog-layout-transparent-bg.hover .product-internal-info, 
+.woocommerce .products .product.catalog-layout-transparent-bg:hover .product-internal-info {
+    background-color: rgba(0,0,0,.3);
+}
+
+/* Shop: Minimal layout title text color */
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info h3 a  {
+	color: #fff;
+}
+
+/* Shop: Minimal layout title text color on hover */
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info h3:hover a  {
+	color: #fff;
+}
+
+/* Shop: Minimal layout author text color */
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info a  {
+	color: rgba(255,255,255,0.5);
+}
+
+/* Shop: Minimal layout title and author remove underline */
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info h3 a:after,
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info a:after {
+	display: none;
+}
+
+/* Shop: Minimal layout price color */
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details .price .amount,
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details .price { 
+	color: #FFF;
+}  
+
+/* Shop: Product hardcover book effect */
+.woocommerce .products .product .product-images:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 7px;
+    bottom: 0;
+    width: 3px;
+    background: rgba(0,0,0,0.02);
+    -webkit-box-shadow: 0px 0 3px rgba(255, 255, 255, 0.25);
+            box-shadow: 0px 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/* Shop: Sale price border */
+.woocommerce .products .product .item-info .price ins, .woocommerce .products .product .item-info .price>.amount {
+	border: none;
+}
+
+/* Product: Add to cart button */
+.woocommerce form.cart .button {
+	border-radius: 3px;
+}
+
+/* Product: Select input color */
+.woocommerce .select-option-ui span {
+	color: #222;
+}
+
+/* Product: Grouped products link color */
+.woocommerce-grouped-product-list-item__label a {
+    color: #222;
+}
+
+/* Product: Tabs remove background  */
+.woocommerce .woocommerce-tabs .tabs li,
+.woocommerce .woocommerce-tabs .entry-content {
+	background: transparent;
+}
+
+/* Product: Tabs remove content padding  */
+.woocommerce .woocommerce-tabs .entry-content {
+	padding: 0px;
+}
+
+/* Product: Tabs spacing */
+.woocommerce .woocommerce-tabs .tabs li a {
+	padding: 15px 0; 
+	margin-right: 15px;
+}
+
+/* Product: Tabs remove titles  */
+.woocommerce .woocommerce-tabs .entry-content h2 {
+	display: none;
+}
+
+/* Product: Tabs table spacing  */
+.woocommerce .woocommerce-tabs .entry-content .shop_attributes td {
+	padding: 5px 0;
+}
+
+/* Product: Image shadow  */
+.woocommerce .single-product-images .kalium-woocommerce-product-gallery a img,
+.woocommerce .single-product-images .kalium-woocommerce-product-gallery .main-product-images .woocommerce-product-gallery__image a {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);
+}
+
+/* Product: Image shadow  */
+.woocommerce .single-product-images .kalium-woocommerce-product-gallery .main-product-images.carousel.flickity-enabled {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);	
+}
+
+/* Product: Image shadow  */
+.woocommerce .single-product-images .kalium-woocommerce-product-gallery.images-layout-type-default {
+    overflow: visible;
+}
+
+/* Product: Reviews remove padding and margin  */
+.woocommerce .woocommerce-Reviews #review_form_wrapper {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Product: Attributes table width  */
+.woocommerce .woocommerce-tabs .entry-content .shop_attributes {
+    width: 100%;  
+}
+
+/* Product: Attributes table title width  */
+.woocommerce .woocommerce-tabs .entry-content .shop_attributes tbody th {
+	width: 20%;
+}
+
+/* Product: Attributes table list padding  */
+.woocommerce .woocommerce-tabs .entry-content .shop_attributes td {
+    padding: 10px 0; 
+}
+
+/* Product: Attributes table row border  */
+.woocommerce .woocommerce-tabs .entry-content .shop_attributes tr {
+    border-bottom: 1px solid #EEE;
+}
+
+/* Product: Attributes table title color  */
+.woocommerce .summary .product_meta .shop_attributes th {
+    color: #898989;
+    font-weight: normal;
+}
+
+/* Product: Attributes table text spacing  */
+.woocommerce .summary .product_meta .shop_attributes td p {
+	margin: 0px;
+	margin-left: 5px;
+}
+
+/* Product: Variation and price margin */
+.woocommerce .summary .single_variation_wrap .single_variation, 
+.woocommerce .summary p.price {
+    margin: 20px 0;
+}
+
+/* Product: Sale ribbon placement */
+.single-product.woocommerce .onsale {
+	right: 60px;	
+}
+
+/* Product: Sharing icons */
+.woocommerce .share-product-container .social-links a {
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+}
+
+/* Product: Quantity field */
+.woocommerce div.quantity input.qty {
+    background-color: #f3f0ef;			
+}
+
+/* Product: Remove underline from price */
+.woocommerce .summary .single_variation_wrap .single_variation ins, 
+.woocommerce .summary p.price ins {
+	border-bottom: 0;
+}
+
+/* Product: Reviews author text color */
+.woocommerce-review__author {
+	color: #222;
+}
+
+/* Product: Reviews border bottom for each review */
+.woocommerce .woocommerce-Reviews #comments .commentlist .comment, 
+.woocommerce .woocommerce-Reviews #comments .commentlist .review {
+	border-bottom: 1px solid #f3f0ef;
+}
+
+
+/* Product: Product hardcover book effect */
+.woocommerce-product-gallery__image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12px;
+    bottom: 0;
+    width: 3px;
+    background: rgba(0,0,0,0.02);
+    -webkit-box-shadow: 0px 0 3px rgba(255, 255, 255, 0.25);
+            box-shadow: 0px 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/* Search Results: Image shadow */
+.search-results-holder .result-box .result-image a .image-placeholder, 
+.search-results-holder .result-box .result-image a .image-placeholder>img {
+	border-radius: 0;
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.25);
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+/* Search Results: Image shadow on hover */
+.search-results-holder .result-box:hover .result-image a .image-placeholder, 
+.search-results-holder .result-box:hover .result-image a .image-placeholder>img {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Results: Title spacing */
+body.search-results .section-title {
+	margin: 45px 0;
+}
+
+/* Sidebar: Remove list count  */
+.widget ul li .count {
+	display: none;
+}
+
+/* Sidebar: Skin (Background Fill Style) */
+.widget-area--skin-background-fill>.widget {
+    background-color: #f3f0ef;
+    border: 5px solid #FFF;
+    -webkit-box-shadow: 0 0 0 1px #c3c3c3;
+            box-shadow: 0 0 0 1px #c3c3c3;
+}
+
+/* Sidebar: Skin (Bordered Style) */
+.widget-area--skin-bordered .widget {
+    background-color: #e8e2e0;
+}
+
+/* Sidebar: Widgets lists border bottom */
+.widget-area--skin-background-fill>.widget ul li, 
+.widget-area--skin-bordered .widget ul li {
+    border-bottom: 1px solid #d7cec7;
+}
+
+/* Sidebar: Widgets lists remove border bottom from last item */
+.widget-area--skin-background-fill>.widget ul li:last-child,
+.widget-area--skin-bordered .widget ul li  {
+	border: none;
+}
+
+/* Sidebar: Search widget background color */
+.widget.widget_product_search .search-bar input[name="s"], 
+.widget.widget_search .search-bar input[name="s"] {
+	background-color: #F3F0F1;
+	font-family: sans-serif;
+}
+
+/* Sidebar: Search widget remove spacing */
+.widget-area--skin-background-fill>.widget.widget_product_search {
+	padding: 0px;
+}
+
+/* Sidebar: Search widget remove margin from label */
+.widget_search form.search-form.search-bar label {
+	margin-bottom: 0px;
+}
+
+/* Sidebar: Widget link color */
+.widget-area .widget li a {
+	color: #76323f;
+}
+
+/* Sidebar: Tag cloud */
+.widget.widget_tag_cloud a {
+    background: #ffffff;
+}
+
+/* Sidebar: Tag cloud hover */
+.widget.widget_tag_cloud a:hover {
+  background: #FFF;
+  -webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.2);  
+}
+
+/* Sidebar: Price filter */
+span.ui-slider-handle.ui-state-default.ui-corner-all:before {
+    content: "\f02e";
+    z-index: 999999;
+    color: #333333;
+    font-family: FontAwesome;
+}
+
+/* Sidebar: Price filter */
+.widget.widget_price_filter .price_slider_wrapper .price_slider .ui-slider-handle {
+    background: transparent;
+    border-radius: 0;
+    margin-top: 0px;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    border-top: 0;
+    border-bottom: 0;
+    line-height: 0;
+}
+
+/* Sidebar: Price filter */
+.widget.widget_price_filter .price_slider_wrapper .price_slider {
+    background-color: #c3c3c3;
+}
+
+/* Classic Pagination Layout */
+.pagination-container a.page-numbers, 
+.pagination-container span.page-numbers, 
+.woocommerce-pagination a.page-numbers, 
+.woocommerce-pagination span.page-numbers,
+.pagination--normal .page-numbers {
+	background: #f3f0ef;
+	padding: 5px 15px;
+	border-radius: 50px;
+	margin: 0px 5px;
+}
+
+
+/* Classic Pagination Layout */
+.pagination-container a.page-numbers, 
+.pagination-container span.page-numbers {
+	color: #76323f;
+}
+
+/* Classic Pagination Layout: Current page */
+.pagination-container a.page-numbers.current, 
+.pagination-container span.page-numbers.current, 
+.woocommerce-pagination a.page-numbers.current, 
+.woocommerce-pagination span.page-numbers.current, 
+.pagination--normal .page-numbers.current {
+    color: #c5ced4;
+}
+
+/* Classic Pagination Layout: Page Hover */
+.pagination-container a.page-numbers:hover, 
+.pagination-container span.page-numbers:hover, 
+.woocommerce-pagination a.page-numbers:hover, 
+.woocommerce-pagination span.page-numbers:hover,
+.pagination--normal .page-numbers:hover {
+	color: #222;
+}
+
+/* Classic Pagination Layout: Current page no hover*/
+.pagination--normal .page-numbers.current:hover,
+.pagination-container span.page-numbers.current:hover {
+    color: #d0c7c3;
+}
+
+/* Mini Cart: Go to cart button */
+.menu-cart-icon-container .cart-icon-link.icon-type-ecommerce-bag .items-count {
+    top: auto;
+    bottom: 11px;
+    left: 5px;
+    border-radius: 0;
+    background: none !important;
+    color: #76323f;
+	width: 19px;
+	transform: none !important;
+}
+
+/* Mini Cart: Go to cart button */
+.menu-cart-icon-container .lab-wc-mini-cart-contents .cart-action-buttons .mc-buttons-container .go-to-cart a {
+    background-color: #f3f0ef;		
+}
+
+/* Mini Cart: Shadow */
+.menu-cart-icon-container.open.menu-cart-icon-container .lab-wc-mini-cart-contents {
+	-webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.25);
+	border-color: transparent;
+}
+
+/* Mini Cart: Left padding */
+.menu-cart-icon-container .lab-wc-mini-cart-contents .cart-items .cart-item .product-details {
+	padding-left: 20px;
+}
+
+/* Cart: Empty */
+.cart-empty {
+    margin-top: 35px;
+}
+
+/* Cart: Image Shadow */
+.woocommerce .shop_table.cart .cart_item .product-thumbnail img {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);	
+}
+
+/* Cart: Table title color  */
+.woocommerce .shop_table tr th {
+	color: #222;
+}
+
+/* Checkout: Info bar */
+.woocommerce-checkout .checkout-form-option--header .woocommerce-info {
+    background-color: #f3f0ef;				
+}
+
+/* Checkout: Payment method box styling */
+.woocommerce-checkout-payment .payment_box {
+    background-color: #f3f0ef;
+    border: 5px solid #FFF;
+    -webkit-box-shadow: 0 0 0 1px #c3c3c3;
+            box-shadow: 0 0 0 1px #c3c3c3;	
+}
+
+/* Checkout: Margin top */
+body.woocommerce-cart .container.default-margin,
+body.woocommerce-checkout .container.default-margin {
+    margin-top: 30px;
+}
+
+/* Blog: Post title color on hover */
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-content-container .blog-post-title a:hover, 
+.blog-posts .post-item .post-details .post-title a:hover,
+.woocommerce .product .item-info h3 a:hover {
+	color: #76323e;
+}
+
+/* Blog: Page title spacing */
+.page-heading--title-section {
+	padding-top: 25px;
+	padding-bottom: 10px;
+}
+
+/* Blog: Image box shadow */
+.wpb_wrapper .lab-blog-posts .blog-post-entry .blog-post-image a,
+.blog--has-sidebar .blog-posts .post-item.columned .post-thumbnail {
+    -webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+/* Blog: Remove image box shadow for rounded images */
+.blog--has-sidebar .blog-posts .post-item.columned.template-rounded .post-thumbnail {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+/* Blog: Image box shadow on hover */
+.wpb_wrapper .lab-blog-posts .blog-post-entry:hover .blog-post-image a,
+.blog--has-sidebar .blog-posts .post-item.columned:hover .post-thumbnail {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);  
+}
+
+/* Blog: Remove image box shadow for rounded images on hover */
+.blog--has-sidebar .blog-posts .post-item.columned.template-rounded:hover .post-thumbnail {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+/* Blog: Image box shadow on hover for Rounded Blog postst */
+.blog-posts .post-item.template-rounded .post-thumbnail .image-placeholder {
+	-webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.25);
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+.blog-posts .post-item.template-rounded:hover .post-thumbnail .image-placeholder {
+	-webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Blog: Hide icons from date and category */
+.blog-posts .post-item .post-details .post-meta i,
+.single-post .post .post-meta i {
+	display: none;
+}
+
+/* Blog: Blockquote background color */
+.single-post .post--full-width-image.format-quote .post-image,
+.blog-posts .post-item .post-thumbnail blockquote, 
+.single-post .post-image .post-quote blockquote {
+    background-color: #f3f0ef;	
+}
+
+/* Post: Navigation text color */
+.post-navigation a i, 
+.post-navigation a strong {
+    color: #222;
+}
+
+/* Post: Tag color on hover */
+.single-post .post .post-tags a:hover {
+    background-color: #e8e3e2;
+}
+
+/* Post: Tag and sharing icon background */
+.woocommerce .share-product-container .social-links a,
+.single-post .post .post-share-networks--style-icons a,
+.single-post .post .post-tags a {
+    background-color: #f3f0ef;
+}
+
+/* Post: Author name color */
+.single-post .post .author-info--details .author-name {
+	color: #222;
+}
+
+/* Post: Comments Input background color and inner shadow */
+.woocommerce .woocommerce-Reviews .comment-form .comment-form-author,
+.woocommerce .woocommerce-Reviews .comment-form .comment-form-email,
+p.labeled-textarea-row.comment-form-comment,
+.single-post .comment-form>p {
+	background: #f3f0ef;
+    padding: 5px 15px;
+    -webkit-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);	
+}
+
+/* Post: Comments Textarea */
+.comment-form-comment {
+    margin-top: 20px;
+}
+
+/* Post: Comments Logged in as paragraph styling */
+.single-post .comment-form>p.logged-in-as {
+    background: transparent;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Post: Comments Submit Comment */
+.single-post .comment-form>p.form-submit {
+    padding: 0px;
+    background: transparent;
+    margin-top: 0px;
+}
+
+/* Post: Comments Spacing Between Forms */
+.single-post .comment-form>p.labeled-input-row {
+    border-right: 18px solid #FFF;
+}
+
+/* Post: Comments Spacing Between Forms */
+.single-post .comment-form>p.comment-form-url {
+    border-right: none;
+}
+
+/* Post: Comments Label Color */
+.labeled-input-row label, 
+.labeled-textarea-row label {
+    color: #222;
+}
+
+/* Post: Comment form */
+.single-post .comment-form {
+    margin: 0px;
+}
+
+/* Post: Comments background color */
+.single-post .post-comments {
+	background-color: #f3f0ef;
+}
+
+/* Post: Comments logged in as remove box shadow */
+.single-post .comment-form>p.logged-in-as {
+	-webkit-box-shadow: none;
+	      box-shadow: none;
+}  
+
+/* Post: Comments line connector */
+.single-post .post-comments--list .comment .commenter-image .comment-connector {
+	border-color: #d7cec7;
+}
+
+/* Post: Comments respond box shadow */
+.single-post .post-comments--list .comment-respond {
+    -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Post: Sharing icons */
+.single-post .post .post-share-networks--style-icons a {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+}
+
+/* About Author: Bio  */
+.about-author-bio {
+	padding-top: 150px;
+	padding-bottom: 150px;
+}
+
+/* About Author: Quote  */
+.about-author-quote {
+	padding-top: 50px;
+	padding-bottom: 50px;	
+}
+
+/* About Author: Author Title  */
+.section-title.author-page-title h2 {
+	margin: 0px;
+}
+
+/* About Author: Author Sub-title */
+.section-title.author-page-title p {
+	letter-spacing: 4px;
+	position: absolute;
+	top: -35px;
+}
+
+/* About Author: Signature */
+.signature {
+	width: 220px;
+}
+
+/* Authors: Image styling */
+.author-image img {
+	-webkit-filter: grayscale(80%); 
+	filter: grayscale(80%);
+	-webkit-transition: -webkit-filter 0.2s;
+	-o-transition: filter 0.2s;
+	transition: filter 0.2s, -webkit-filter 0.2s;
+}
+
+/* Authors: Image styling on hover */
+.author-image:hover img {
+	-webkit-filter: grayscale(0%); 
+	filter: grayscale(0%);
+}
+
+/* About: Carousel Navigation */
+.image-carousel .vc_images_carousel .vc_carousel-indicators li {
+	border: 2px solid #FFF;
+	background-color: transparent;
+}
+
+/* About: Carousel Navigation  Active*/
+.image-carousel .vc_images_carousel .vc_carousel-indicators li.vc_active {
+	border: 2px solid #FFF;
+	background-color: #FFF;
+}
+
+/* Events: Page title spacing */
+.wpb_wrapper .lab-portfolio-items .portfolio-title-holder { 
+	margin: 0px; 
+}
+
+/* Events: Icons */
+.event-icons .vc_icon_element-inner {
+    border: 5px solid #fff !important;
+	transition: .3s ease;
+}
+
+/* Events: Icons on hover */ 
+.event-icons .vc_icon_element-inner:hover {
+    background-color: #58252f !important;
+	box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+}
+
+/* Events: Remove top and bottom margin */ 
+.portfolio-vc-type-container+.container .page-container {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+/* Events: Shadow */ 
+.portfolio-holder.portfolio-type-1 .portfolio-item .info {
+    padding: 20px 30px;
+    background-color: #fff;
+	-webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* Events: Shadow */ 
+.portfolio-holder .item-box:hover {
+    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);
+}
+
+/* Events: Transition */ 
+.portfolio-item.portfolio-item-type-7 .item-box {
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+        transition: all 0.3s;
+}
+
+/* Events: Date */
+.portfolio-holder .item-box .info p {
+    margin-top: 10px;
+    color: #898989;
+}  
+
+
+/* Events:  Title color */
+.portfolio-holder .item-box .info h3 a {
+    color: #222;
+}
+
+/* Events:  Title color on hover */
+.portfolio-holder .item-box .info h3 a:hover {
+    color: #76323f;	
+}
+
+/* Events: Team member image radius */
+.team-holder .thumb img {
+    border-radius: 3px;
+}
+
+/* Events: Map */
+.wpb_gmaps_widget .wpb_wrapper {
+	padding: 0;
+}
+
+/* Contact: Map shadow  */
+.wpb_wrapper .lab-google-map {
+    -webkit-box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.215);
+            box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.215);
+}
+
+/* Contact: Page title spacing */
+.portfolio-title-holder,
+.contact-wrapper {
+	padding: 45px 0;
+	margin-bottom: 0px;
+}
+
+/* Contact Form: Input Colors */
+.contact-form .form-group {
+	background: #f3f0ef;
+	padding: 5px 15px;
+    -webkit-box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);	
+	border-radius: 3px;
+}
+
+/* Contact: Privacy policy background */
+.contact-form .form-group.contact-form-privacy-policy {
+    background: transparent;
+	padding: 0px;
+	-webkit-box-shadow: none;
+	        box-shadow: none;
+}
+
+/* Contact form border radius */
+.contact-form .button {
+	border-radius: 3px;
+}
+
+/* Contact: Captcha redesign */
+.form-group.contact-form-recaptcha {
+    background: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+
+/* Contact: Form remove borders */
+.lab-contact-form .labeled-input-row label,
+.lab-contact-form .labeled-input-row input, 
+.lab-contact-form .labeled-textarea-row label {
+	border-bottom: none;
+}
+
+/* Contact: Form width */
+.labeled-input-row input {
+    width: 70%;
+}
+
+/* Contact: Form textarea remove border */
+.labeled-textarea-row textarea {
+	background: none;
+	padding-top: 0px;
+}
+
+/* Contact: Form padding */
+.lab-contact-form.first-contact-form {
+	padding-top: 30px;
+}
+
+/* Contact: Form autofill background color for webkit browsers */
+html input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #eee inset;
+    box-shadow: 0 0 0 1000px #eee inset;
+}
+
+/* Contact: Icons shadow */
+.contact-icons .vc_icon_element-inner {
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+}
+
+/* Contact: Map Margin Top */
+.contact-map-column {
+	margin-top: -100px;
+}
+
+/* Footer: Remove bottom margin from widgets */
+.widget-area.widgets--columned-layout.widgets--columns-4>.widget {
+	margin-bottom: 0px;
+}
+
+/* Footer: Border color */
+.site-footer.site-footer-inverted hr {
+    border-color: rgba(255,255,255,.1);
+}
+
+
+/* Footer: List text spacing */
+.site-footer .footer-widgets .widget ul li {
+	padding: 2px 0px;
+}
+
+/* Footer: Widget width */
+.widget-area.widgets--columned-layout.widgets--columns-4>.widget {
+	width: 20%;
+}
+
+/* Footer: First widget width */
+.widget-area.widgets--columned-layout.widgets--columns-4>.widget:nth-child(1) {
+	width: 40%;
+}
+
+/* Footer: First widget text color */
+.footer-widgets .widget p.footer-address {
+	color: #222;
+}
+
+/* Footer: Copyright text color */
+.site-footer.site-footer-inverted .footer-bottom-content .copyrights p {
+	color: rgba(255,255,255,0.15)
+}
+
+/* Footer: Link text color */
+.site-footer.site-footer-inverted .footer-bottom-content .footer-content-right a,
+.site-footer.site-footer-inverted .footer-widgets .widget a,
+.site-footer.footer-bottom-horizontal .footer-bottom-content .footer-content-right,
+.site-footer .footer-bottom-content a {
+	color: rgba(255,255,255,0.5);
+}
+
+/* Footer: Link text color on hover */
+.site-footer.site-footer-inverted .footer-bottom-content .footer-content-right a:hover,
+.site-footer.site-footer-inverted .footer-widgets .widget a:hover,
+.site-footer a:hover, 
+.site-footer .footer-bottom a:hover {
+	color: rgba(255,255,255,1);
+}
+
+/* Footer: Payment methods */
+.payment-methods-footer {
+	padding: 0px 8px;
+	background: #FFF;
+	border-radius: 3px;
+}
+
+/* Footer: Social networks rounded */
+.site-footer .social-networks.rounded li a:hover {
+	background: rgba(255,255,255,0.75);
+}
+
+/* Footer: Background color */
+footer.site-footer {
+    background-color: #353332 !important;
+}
+
+/* Mailchimp Alert margin top */
+.mc4wp-alert {
+    margin-top: 15px;
+}
+
+/* Search results add to cart button radius and hover color */
+.search-results-holder .result-box .result-info .add_to_cart_button {
+    border-radius: 3px;
+}
+
+.search-results-holder .result-box .result-info .add_to_cart_button:hover {
+    color: #fff;
+}
+
+/* Woocommerce info button */
+.woocommerce-Message .button, .woocommerce-error .button, .woocommerce-info .button, .woocommerce-message .button, .woocommerce-notice .button {
+	border-radius: 3px;
+}
+/* WooCommerce listing page, transparent bg 'minimal' layout) */
+.woocommerce .products .product.catalog-layout-transparent-bg .add-to-cart-column .add-to-cart-icon {
+	color: #fff;
+}
+
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details .price del .amount {
+	color: #fff;
+}
+
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details .price ins .amount {
+    border-bottom-color: #fff;
+}
+
+.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details .price del {
+    color: #fff;
+}
+
+/* Blog Posts Masonry shadow*/
+.blog-posts .post-item.template-standard {
+	-webkit-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.15);
+    -webkit-transition: -webkit-box-shadow 0.2s;
+    -o-transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+.blog-posts .post-item.template-standard:hover {
+	-webkit-box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.25);
+}
+
+/* Testimonial Images */
+.testimonials-image img {
+    width: 100px;
+}
+
+/* Testimonial (pageable Container) Pagination */
+.wpb-js-composer .vc_tta-tabs.vc_tta-has-pagination .vc_pagination {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+/* ===========================================================
+Applied only in custom screen size - Extra Small
+=========================================================== */
+@media screen and (max-width: 768px) {
+	/* Title: Bottom margin */
+	.section-title {
+		margin-bottom: 25px;
+	}
+	
+	/* General: Spacing */
+	.vc_col-has-fill>.vc_column-inner, 
+	.vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, 
+	.vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, 
+	.vc_row-has-fill>.vc_column_container>.vc_column-inner {
+		padding-top: 25px;
+	}
+	
+	/* Mobile Menu: Trigger color */
+	.menu-bar.menu-skin-dark .ham,
+	.menu-bar.menu-skin-dark .ham:after,
+	.menu-bar.menu-skin-dark .ham:before {
+		background-color: #76323f;	
+	}
+	
+	/* Mobile Menu: Trigger spacing */
+	.menu-bar .ham:before {
+	    top: -10px;
+	}
+	
+	/* Mobile Menu: Trigger spacing */
+	.menu-bar .ham:after {
+	    top: 10px;
+	}
+	
+	/* Mobile Menu: Trigger spacing */
+	.menu-bar.exit .ham:before {
+	    top: -8px;
+	}
+	
+	/* Mobile Menu: Trigger spacing */
+	.menu-bar.exit .ham:after {
+	    top: 8px;
+	}
+	
+	/* Mobile menu: Item spacing */
+	.mobile-menu-wrapper .mobile-menu-container div.menu>ul>li>a,
+	.mobile-menu-wrapper .mobile-menu-container ul.menu>li>a {
+		padding: 5px 30px;	
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel .vc_tta-panel-heading {
+		position: absolute; 
+		top: -20px;
+		text-align: center !important;
+		width: 33.3333%;
+		background: #f3f0ef;
+		padding: 5px;
+	}
+	 
+	/* Homepage: Books tabs */
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel .vc_tta-panel-heading {
+		border-radius: 0 !important;	
+		padding: 10px 0;
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .vc_tta-shape-rounded.vc_tta-o-shape-group.vc_tta-o-no-fill .vc_tta-panel:first-child:not(:last-child):not(.vc_active) .vc_tta-panel-heading,
+	.wpb-js-composer .vc_tta-shape-rounded.vc_tta-o-shape-group.vc_tta-o-no-fill .vc_tta-panel:first-child:not(:last-child) .vc_tta-panel-heading {
+	    border-top-left-radius: 3px !important;
+	    border-bottom-left-radius: 3px !important;
+	    border-top-right-radius: 0px !important;
+	    border-bottom-right-radius: 0px !important;
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .vc_tta-shape-rounded.vc_tta-o-shape-group.vc_tta-o-no-fill .vc_tta-panel:not(:first-child):not(:last-child).vc_active .vc_tta-panel-heading {
+		border-radius: 0 !important;
+	}
+	 
+	 
+	/* Homepage: Books tabs */
+	.wpb-js-composer .vc_tta-shape-rounded.vc_tta-o-shape-group.vc_tta-o-no-fill .vc_tta-panel:last-child:not(:first-child):not(.vc_active) .vc_tta-panel-heading,
+	.wpb-js-composer .vc_tta-shape-rounded.vc_tta-o-shape-group.vc_tta-o-no-fill .vc_tta-panel:last-child:not(:first-child) .vc_tta-panel-heading {
+	    border-top-right-radius: 3px !important;
+	    border-bottom-right-radius: 3px !important;
+	    border-top-left-radius: 0px !important;
+	    border-bottom-left-radius: 0px !important;
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .home-tabs-books.vc_tta.vc_tta-o-no-fill .vc_tta-panels .vc_tta-panel-body {
+		padding-top: 35px !important;
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel .vc_tta-panel-heading a {
+		padding: 0px;
+	}
+	
+	/* Homepage: Books tabs */
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel .vc_tta-panel-heading:focus, 
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel .vc_tta-panel-heading:hover,
+	.wpb-js-composer .home-tabs-books.vc_tta-color-grey.vc_tta-style-flat .vc_tta-panel.vc_active .vc_tta-panel-heading { 
+		background: #e4e1e0;
+	}
+	
+	/* Homepage: Books tabs */
+	#best-selling .vc_tta-panel-heading {
+	    left: 0;
+	}
+	
+	/* Homepage: Books tabs */
+	#latest .vc_tta-panel-heading {
+	    left: 33.3333%;
+	}
+	
+	/* Homepage: Books tabs */
+	#sale .vc_tta-panel-heading {
+	    left: 66.6666%;
+	}
+	
+	/* Homepage: Books padding */
+	.home-books {
+		padding-top: 25px;
+	}	
+	
+	/* Homepage: Events see more link  */
+	.home .wpb_wrapper .lab-portfolio-items .more-link {
+	    margin-top: 20px;
+	}
+	
+	/* Homepage: Events spacing  */
+	.home .wpb_wrapper .lab-portfolio-items {
+	    margin-bottom: 20px;
+	}
+	
+	/* Homepage: Selected book spacing  */
+	.home .single-product--product-details>.product .summary {
+	    padding: 15px;		
+	}
+	
+	/* Homepage: Author of the month title margin  */
+	.home .section-title.author-page-title {
+		margin-bottom: 20px;
+	}
+	
+	/* Homepage: Blog posts button */
+	.more-link {
+		position: relative;
+	}
+	
+	/* Homepage: Blog posts button */
+	.more-link .show-more {
+	    margin-top: 0;
+	    margin-bottom: 20px;
+	}
+	
+	/* Homepage: News add post spacing */
+	.wpb_wrapper .lab-blog-posts.posts-layout-left .blog-post-entry .blog-post-content-container {
+		padding: 20px 0 0 0;
+	}
+	
+	/* Homepage: News spacing */
+	.wpb_wrapper .lab-blog-posts {
+	    margin-bottom: 0px;
+	}
+	
+	/* Homepage: Selected book spacing  */
+	.home-book-of-month {
+		padding: 10px 0px 10px 0px;
+	}
+	
+	/* Homepage: Products remove bottom margin  */
+	.home .woocommerce .products .product .item-info {
+	    margin-bottom: 20px;
+	}
+	
+	/* Homepage: Featured book right padding */
+	.homepage-featured-book {
+		padding-right: 0px;
+		margin-bottom: 20px;
+	}
+	
+	/* Homepage: Special Offer */
+	.special-offer {
+	  padding: 25px 0;
+	}
+	
+	/* Homepage: Special Offer */
+	.special-offer .vc_btn3 {
+	    width: 100%;
+	    margin-top: 20px;
+	}
+	
+	/* Shop: Page title spacing */
+	.page-heading,
+	.woocommerce .woocommerce-shop-header--columned { 
+		margin: 25px 0;
+	}
+	
+	/* Contact: Page title spacing */
+	.portfolio-title-holder,
+	.contact-wrapper {
+		padding: 25px 0;	
+	}
+	
+	/* Contact Form: Input Colors */
+	.contact-form .form-group {
+		margin-bottom: 15px;
+	}
+	
+	/* Contact Form: Button width */
+	.contact-form .button {
+		width: 100%;
+	}
+	
+	/* Contact: Map shadow  */
+	.wpb_wrapper .lab-google-map {
+	    -webkit-box-shadow: none;
+	            box-shadow: none;
+	}
+	
+	/* Blog: Post title line height */
+	.blog-posts .post-item .post-details .post-title {
+		line-height: 1.5
+	}
+	
+	/* Blog: Page title spacing */
+	.page-heading--title-section {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	
+	/* Blog: Pagination button margin bottom */
+	.pagination--infinite-scroll {
+		margin-bottom: 25px;
+	}
+	
+	/* Blog: Pagination button spacing around */
+	.pagination--infinite-scroll .pagination--infinite-scroll-show-more {
+		padding: 15px;
+		width: 100%;
+	}
+	
+	/* Post: Comments caret position */
+	.single-post .post-comments:before {
+		right: 20px;
+	    border-width: 30px 30px 0 0;
+	}
+	
+	/* Post: Comments padding */
+	.single-post .post-comments {
+	    padding: 25px 0;	
+	}
+	
+	/* Post: Comments button position */
+	.single-post .comment-form>p.form-submit {
+		float: left
+	}
+	
+	/* Post: Comments leave reply spacing */
+	.single-post .post-comments+.post-comment-form .comment-respond {
+		padding: 6px 0 5px 0;
+	}
+	
+	/* Post: Feature image bottom margin */
+	.single-post .post .post-meta-only .post-meta,
+	.single-post .post .entry-header,
+	.single-post .row .post-image {
+		margin-bottom: 25px;
+	}
+	
+	/* Post: Navigation width */
+	.post-navigation a {
+		width: 30%
+	}
+	
+	/* Shop: Category titles */
+	.woocommerce .shop-categories .product-category .woocommerce-loop-category__title, 
+	.woocommerce .shop-categories .product-category h3 {
+	    letter-spacing: 0px;
+	}
+	
+	/* Shop: Category image styling */
+	.woocommerce .shop-categories .product-category img {
+	    padding: 0px;
+	}
+	
+	/* Shop: Category spacing */
+	.woocommerce .shop-categories .product-category {
+		padding: 0 10px;
+		margin-bottom: 10px;	
+	}
+	
+	/* Shop: Categories per row */
+	.woocommerce .products.shop-categories .product-category {
+		width: 25%;
+	}
+	
+	/* Shop: Categories per row clear */
+	.woocommerce .products.shop-categories .product,
+	.woocommerce .products.shop-categories .product:nth-of-type(2n+1) {
+		clear: none;
+	}
+	
+	/* Sidebar: Widget bottom margin */
+	.widget-area .widget {
+		margin-bottom: 15px;
+	}
+	
+	/* Shop: Dropdown style */
+	.woocommerce .woocommerce-shop-header--sorting .woocommerce-ordering--dropdown .dropdown .dropdown-toggle {
+	    background-color: #f3f0ef;	
+	    border: 5px solid #FFF;
+	    -webkit-box-shadow: 0 0 0 1px #c3c3c3;
+	            box-shadow: 0 0 0 1px #c3c3c3;	
+	}
+	
+	/* Shop: Product margin bottom for default layout */
+	.woocommerce .products .product.catalog-layout-default {
+		margin-bottom: 0px;
+	}
+	
+	/* Shop: Price margin */
+	.woocommerce .products .product .item-info .item-info-row>.price-column {
+		margin-top: 0px;
+	}
+	
+	/* Shop: Full background hover */
+	.woocommerce .products .product.catalog-layout-full-bg .product-internal-info, 
+	.woocommerce .products .product.catalog-layout-transparent-bg .product-internal-info {
+		padding: 20px;
+	}
+	
+	/* Shop: Full background hover price */
+	.woocommerce .products .product.catalog-layout-full-bg .item-info .product-bottom-details, 
+	.woocommerce .products .product.catalog-layout-transparent-bg .item-info .product-bottom-details {
+		left: 20px;
+		bottom: 20px;
+		right: 20px;
+	}
+	
+	/* Shop: Distanced layout hover */
+	.woocommerce .products .product.catalog-layout-distanced-centered .item-info .title-and-price {
+		padding: 10px;
+	}
+	
+	/* Shop: Distanced layout hover */
+	.woocommerce .products .product.catalog-layout-distanced-centered .product-internal-info {
+	    top: 10px;
+	    bottom: 10px;
+	    left: 10px;
+		right: 10px;
+	}
+	
+	/* Shop: Sale ribbon */
+	.single-product.woocommerce .onsale,
+	.woocommerce .onsale {
+	    right: 40px;
+	    width: 30px;
+	    line-height: 30px;
+	}
+	
+	/* Shop: Sale ribbon */
+	.woocommerce .onsale,
+	.woocommerce .onsale.oos,
+	.woocommerce .onsale.featured {
+		line-height: 30px;
+	} 
+	
+	/* Product: Grouped product */
+	.woocommerce-grouped-product-list-item__quantity {
+		width: 20%;
+		padding-right: 10px !important;
+	}
+	
+	/* Product: Grouped product */
+	.woocommerce-grouped-product-list-item__label {
+		width: 70%;
+		padding-right: 10px !important;
+	}
+	
+	/* Product: Grouped product */
+	.woocommerce-grouped-product-list-item__price {
+		width: 15%;
+		text-align: center;
+		padding-right: 0px !important;
+	}
+	
+	/* Product: Grouped product */
+	.woocommerce .woocommerce-grouped-product-list .woocommerce-grouped-product-list-item__price ins {
+		margin-right: 0px;
+		padding-top: 5px;
+	}
+	
+	/* Product: Add to cart button */
+	.woocommerce form.cart .button {
+		border-radius: 3px;
+	    padding-top: 15px;
+		padding-bottom: 15px;
+	    height: auto;
+	}
+	
+	/* Product: Image shadow  */
+	.woocommerce .single-product-images .kalium-woocommerce-product-gallery .flickity-enabled .flickity-viewport {
+	    -webkit-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);
+	    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.20);	
+	}
+	
+	/* Product: Featured image top spacing */
+	.woocommerce .content-area .site-main {
+		margin-top: 25px;
+	}
+	
+	/* Product: Featured image bottom margin */
+	.woocommerce .single-product--product-details>.product .products>h2,
+	.woocommerce .single-product-images .kalium-woocommerce-product-gallery .thumbnails,
+	.woocommerce .single-product-images .kalium-woocommerce-product-gallery .main-product-images.plain {
+		margin-bottom: 25px;	
+	}
+	
+	/* Product: Top spacing */
+	.woocommerce .single-product--product-details>.product .summary {
+	    padding-top: 0px;
+	} 
+	
+	/* Product: Tabs */
+	.woocommerce .woocommerce-tabs {
+		padding-top: 0px;
+		margin-top: 25px;
+		margin-bottom: 6px;
+	}
+	
+	/* Product: Tab active color */
+	.woocommerce .woocommerce-tabs .tabs li.active {
+		background-color: transparent;
+	}
+	
+	/* Product: Tab padding */
+	.woocommerce .woocommerce-tabs .tabs li a {
+		padding: 10px 0;
+	}
+	
+	/* Product: Sharing top margin */
+	.woocommerce .share-product-container {
+		margin-top: 0px;
+	}
+	
+	/* Product: Reviews top margin */
+	.woocommerce .woocommerce-Reviews #review_form_wrapper {
+		padding-top: 0px;
+	}
+	
+	/* About: Client logos two on a row */
+	.logos-holder .client-logos-col {
+	    width: 50% !important;
+	}
+	
+	/* Authors: Author image bottom margin */
+	.author-image {
+		margin-bottom: 25px;
+	}
+	
+	/* Authors: Author image bottom margin */
+	.author-image img {
+		width: 100%;
+	}
+	
+	/* About Author: Bio  */
+	.about-author-bio {
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+	
+	/* About Author: Quote  */
+	.about-author-quote {
+		padding-top: 25px;
+		padding-bottom: 25px;	
+	}
+	
+	/* About Author: Author Sub-title */
+	.section-title.author-page-title p {
+		letter-spacing: 0;
+		position: relative;
+		top: 0;
+	}
+	
+	/* About Author: Signature */
+	.signature {
+		width: 150px;
+	}
+	
+	/* Sidebar: Widget padding */
+	.widget-area--skin-background-fill .widget, 
+	.widget-area--skin-bordered .widget {
+	    padding: 20px;
+	}
+	
+	/* Search Results: Title spacing */
+	body.search-results .section-title {
+		margin: 25px 0;
+	}
+	
+	/* Search Results: Image width */
+	.search-results-holder .result-box .result-image a {
+		max-width: 100%;
+	}
+	
+	/* Search Results: Image spacing */
+	.search-results-holder .result-box {
+		margin-bottom: 25px;
+	}
+	
+	/* Search Results: Image spacing */
+	.search-results-holder .result-box+.result-box {
+		padding-top: 0;
+		border: none;
+	}
+	
+	/* Footer: Widget width */
+	.widget-area.widgets--columned-layout.widgets--columns-4>.widget {
+		width: 50%;
+		margin-bottom: 25px;
+	}
+	
+	/* Footer: First widget width */
+	.widget-area.widgets--columned-layout.widgets--columns-4>.widget:nth-child(1) {
+		width: 50%;
+	}
+	
+	/* Footer: List text spacing */
+	.site-footer .footer-widgets .widget ul li {
+		padding: 0px 0px 2px 0px;
+	}
+}
+
+/* ===========================================================
+Applied only in custom screen size - Small
+=========================================================== */
+@media screen and (min-width: 768px) {
+	/* Shop: Categories per row clear */
+	.woocommerce .products.shop-categories .product:nth-of-type(2n+1) {
+		clear: none;
+	}
+	
+	/* Shop: Category image styling */
+	.woocommerce .shop-categories .product-category img {
+	    padding: 0px;
+	}
+	
+	/* Shop: Category spacing */
+	.woocommerce .shop-categories .product-category {
+		padding: 0 10px;
+	}
+	
+	/* Shop: Categories per row */
+	.woocommerce .products.shop-categories .product-category {
+		width: 20%;
+	}
+	
+	/* Authors: Author image bottom margin */
+	.author-image img {
+		width: 100%;
+	}
+}
+
+/* ===========================================================
+Applied only in custom screen size - Medium
+=========================================================== */
+@media screen and (min-width: 992px) {
+	/* Shop: Categories per row clear */
+	.woocommerce .products.shop-categories .product:nth-of-type(4n+1) {
+		clear: none;
+	}
+	
+	/* Shop: Category image styling */
+	.woocommerce .shop-categories .product-category img {
+	    padding: 0px;
+	}
+	
+	/* Shop: Category spacing */
+	.woocommerce .shop-categories .product-category {
+		padding: 0 10px;
+	}
+	
+	/* Shop: Categories per row */
+	.woocommerce .products.shop-categories .product-category {
+		width: 10%;
+	}
+}
+
+/* ===========================================================
+Applied only in custom screen size - Large
+=========================================================== */
+@media screen and (min-width: 1200px) {
+	/* Homepage: Author of the month product bottom margin */
+	.home .home-author-of-month .products .product  {
+	    margin-bottom: 0px;
+	}  
+}

@@ -1,0 +1,109 @@
+<%- include('../includes/head.ejs') %>
+    <link href="/css/typeahead.css"  rel="stylesheet" />
+    <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/css/autocomplete.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div style="margin-top:100px"></div>
+    
+    <div class="container" style="margin-bottom: 5rem;">
+        <div class="col-lg-1 col-md-2"></div>
+        <div class="col-lg-10 col-md-8">
+            <h3 class="mb-30 title_color"><% if(editing) { %>Edit Blog<% } else { %>Add Blog<% } %></h3>
+            <form action="/<% if(editing) { %>edit-blog<% } else { %>create-blog<% } %>" method="POST" id="add-form" enctype="multipart/form-data">
+                <div class="mt-10">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" placeholder="Title" id="title" value="<% if(editing || hasError) { %><%= blog.title %><% } %>" class="single-input <%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>">
+                </div>
+                <div class="mt-10">
+                    <label for="image">Image URL</label>
+                    <input type="file" name="image" id="image" class="single-input">
+                     
+                </div>
+                
+                <div class="mt-10">
+                    <label for="tags">Tags</label>
+                    <input type="text" name="tags" value="" id="tags-input" data-role="tagsinput" value="<% if(editing || hasError) { %><%= blog.tags %><% } %>" />
+                </div>
+                <div class="mt-10">
+                    <label for="title">Quote</label>
+                    <input type="text" name="quote" placeholder="Quotes, if any" id="quote" value="<% if(editing || hasError) { %><%= blog.quote %><% } %>" class="single-input <%= validationErrors.find(e => e.param === 'quote') ? 'invalid' : '' %>">
+                </div>
+                <div class="mt-10">
+                    <label for="tags">Text</label>
+                    <textarea class="single-textarea" name="text" placeholder="Start writing here..." rows=20 required>
+                        <% if(editing || hasError) { %><%= blog.text %><% } %>
+                    </textarea>
+                </div>
+                
+                <br>
+                <% if(editing) { %>
+                    <input type="hidden" value="<%= blog._id %>" name="blogId">
+                <% } %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn" type="submit"><% if(editing) { %>Update<% } else { %>Post<% } %></button>
+               
+            </form>
+            <% if(errorMessage) { %>
+                <br><br>
+                <div class="user-message user-message--error"><%= errorMessage %></div>
+            <% } %>
+        </div>
+        <div class="col-lg-1 col-md-2"></div>
+    </div>
+
+<script
+    src="https://code.jquery.com/jquery-1.11.2.min.js"
+    integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA="
+    crossorigin="anonymous"></script>
+<script src="/vendors/typeahead/typeahead.js"></script>
+<script src="/vendors/tagsinput/bootstrap-tagsinput.js"></script>
+<script type="text/javascript">
+      var genres = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: {
+          url: 'blogtags',
+          filter: function(list) {
+            return $.map(list, function(name) {
+              return { name: name }; });
+          }
+        }
+      });
+      genres.initialize();
+  
+      $('#tags-input').tagsinput({
+        typeaheadjs: {
+          name: 'blogtags',
+          displayKey: 'name',
+          valueKey: 'name',
+          source: genres.ttAdapter()
+        }
+      });
+</script>
+  
+<script>
+    var tags=$('#tags-input').text();
+    console.log(tags);
+</script>
+  
+<script>
+    //   $('#add-form').on('keyup keypress', function(e) {
+    //       var keyCode = e.keyCode || e.which;
+    //       if (keyCode === 13) { 
+    //           e.preventDefault();
+    //           return false;
+    //   }
+    // });
+
+      $(document).on('keypress', ':input:not(textarea):not([type=submit])', function (e) {
+        if (e.which == 13) e.preventDefault(); 
+    });
+ 
+</script>
+
+
+
+
+<%- include('../includes/end.ejs') %>

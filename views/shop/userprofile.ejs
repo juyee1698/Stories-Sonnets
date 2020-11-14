@@ -1,0 +1,244 @@
+<%- include('../includes/head.ejs') %>
+  
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+</head>
+
+<body>
+    
+   <%- include('../includes/navigation.ejs') %>
+   <div style="margin-top: 10rem;"></div>
+   <div class="container-fluid mt-7">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget author_widget">
+                        <img class="author_img rounded-circle" height=200 width=200 src="/<%= user.imageUrl %>" alt="">
+                        <h4><%= user.name %></h4>
+                        <p><%= user.email %></p>
+                        <div class="social_icon">
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        
+                        </div>
+                        <p>
+                        <%= user.description %>
+                        </p>
+                        <br>
+                        <% if(userIsLoggedIn) { %>
+                            <% if(current._id.toString()!==user._id.toString()) { %>
+                            <form id="follow">
+                                <input type="hidden" value="<%= JSON.stringify(user) %>" name="user">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <% if(!following) { %>
+                                    <button type="submit" class="follow-button" id="follow-button">+ Follow</button>
+                                <% } else { %>
+                                    <button type="submit" class="following-button" id="following-button">Following</button>
+                                <% } %>
+                            </form>
+                            <% } %>
+                            <br><br>
+                        <% } %>
+                        
+                        <h6><%= user.follow.followers.length %> Followers</h6>
+                    <div class="br"></div>
+                    
+                       <h4><%= reviews.length %> Reviews</h4> 
+                       <h4><%= blogs.length %> Blogs</h4> 
+                    </aside>
+                    
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <section class="product_description_area" style="margin-top: 0;">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+						aria-controls="review" aria-selected="true">Reviews</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Blogs</a>
+                            </li>
+                           
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab" style="color: #61421f;">
+                                <% if(reviews.length>0) { %>
+                                    <div class="review_list" id="reviewList">
+                                        <h2><%= user.name %>'s book reviews</h2>
+                                        <div class="br"></div>
+                                        <% for(let review of reviews) { %>
+                                        
+                                        <div class="review_item" id="displayReviews">
+                                            <div class="media">
+                                                <a href="/products/<%= review.productId._id %>">
+                                                    <div class="d-flex review__image">    
+                                                            <img src="/<%= review.productId.imageUrl %>" alt="post">
+                                                    </div>
+                                                </a>
+                                                <div class="media post_item">
+                                                    
+                                                    <div class="media-body" style="padding-left: 25px;">  
+                                                        
+                                                        <% for (var i =1; i <=review.rating;  i++ ) { %>
+                                                        <i class="fa fa-star"></i>
+                                                        <% } %>
+                                                        <% for (var i =1; i <=5-review.rating;  i++ ) { %>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <% } %>
+            
+                                                        <h5><%= review.summary %></h5>
+                                                        <p><%= review.text %></p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="br"></div>
+                                        </div>
+                                        <% } %>
+                
+                                    </div>
+                                    <% } else { %>
+                                    <div class="review_list" id="noReviews">
+                                        <div class="review_item">
+                                            <h3>No reviews yet...</h3>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="color: #61421f;">
+                                <h2><%= user.name %>'s blogs</h2>
+                        <div class="br"></div>
+                        <% if(blogs.length>0) { %>
+                            <% for(blog of blogs) { %>
+                            <article class="row blog_item">
+                                <div class="col-md-2">
+                                    <div class="blog_info text-right">
+                                        <div class="post_tag">
+                                            <% for(let tag of blog.tags) { %>
+                                            <a href="#"><%= tag %>,</a>
+                                            <% } %>
+                                        </div>
+                                        <ul class="blog_meta list">
+                                            <li>
+                                                <a href="#"><%= user.name %>
+                                                    <i class="lnr lnr-user"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><%= blog.date %>
+                                                    <i class="lnr lnr-calendar-full"></i>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="blog_post">
+                                        <img src="/<%= blog.imageUrl %>" alt="<%= blog.title %>">
+                                        <div class="blog_details">
+                                            <a href="/blogs/<%= blog._id %>">
+                                                <h2><%= blog.title %></h2>
+                                            </a>
+                                            
+                                            <a href="/blogs/<%= blog._id %>" class="white_bg_btn">View More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <% } %>
+                            <% } %>
+                            </div>
+                      </div>
+                </section>
+                
+                
+            </div>
+        
+        </div>
+    </div>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"
+        integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+        },
+        $('#follow').submit(
+            function (e) {
+                e.preventDefault();
+                if ($("#follow-button").text() == "+ Follow") {
+                        console.log("I am here");
+                        fetch('/add-follower', {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'csrf-token': document.querySelector('#follow input[name=_csrf]').value
+                            },
+                            method: "POST",
+                            body: JSON.stringify({
+                                user: document.querySelector('#follow input[name=user]').value,
+                            })
+                        }).then((response) => {
+                            
+                            response.json()
+                                .then(data => {
+                                    console.log(data);
+                                    let followButton = document.getElementById("follow-button");
+                                    followButton.remove();
+                                    let followingButton = document.createElement("button");
+                                    followingButton.className = "following-button";
+                                    followingButton.id = "following-button";
+                                    followingButton.innerText = "Following";
+                                    document.getElementById("follow").appendChild(followingButton);
+                            });
+                        });
+
+                }
+                else {
+                    
+                    fetch('/remove-follower', {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'csrf-token': document.querySelector('#follow input[name=_csrf]').value
+                            },
+                            method: "POST",
+                            body: JSON.stringify({
+                                user: document.querySelector('#follow input[name=user]').value,
+                            })
+                        }).then((response) => {
+                            
+                            response.json()
+                                .then(data => {
+                                    let followingButton = document.getElementById("following-button");
+                                    followingButton.remove();
+                                    let followButton = document.createElement("button");
+                                    followButton.className = "follow-button";
+                                    followButton.id = "follow-button";
+                                    followButton.innerText = "+ Follow";
+                                    document.getElementById("follow").appendChild(followButton);
+                            });
+                        });
+                }
+            })
+            
+        );
+            
+
+    </script>
+    <%- include('../includes/end.ejs') %>
+    
+    

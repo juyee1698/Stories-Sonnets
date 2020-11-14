@@ -1,0 +1,370 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area p_120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post row">
+                        <div class="col-lg-12">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="/<%= blog.imageUrl %>" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-3  col-md-3">
+                            <div class="blog_info text-right">
+                                <div class="post_tag">
+                                    <% for(let tag of blog.tags) { %>
+                                    <a href="/blogs/tags/<%= tag %>"><%= tag %>,</a>
+                                    <% } %>
+                                </div>
+                                <ul class="blog_meta list">
+                                    <li>
+                                        <a href="/profile/<%= user._id %>"><%= user.name %>
+                                            <i class="lnr lnr-user"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><%= blog.dateString %>
+                                            <i class="lnr lnr-calendar-full"></i>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="#">1.2M Views
+                                            <i class="lnr lnr-eye"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">06 Comments
+                                            <i class="lnr lnr-bubble"></i>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                                <ul class="social-links">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-behance"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 blog_details">
+                            <h2> <%= blog.title %></h2>
+                            <p class="excert">
+                                <%= blog.text %>
+                            </p>
+
+                        </div>
+                        <% if(blog.quote) { %>
+                        <div class="col-lg-12">
+                            <div class="quotes">
+                                <%= blog.quote %>
+                            </div>
+
+                        </div>
+                        <% } %>
+                    </div>
+                    <!-- <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="img/blog/prev.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#">
+                                        <span class="lnr text-white lnr-arrow-left"></span>
+                                    </a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev Post</p>
+                                    <a href="#">
+                                        <h4>Space The Final Frontier</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                <div class="detials">
+                                    <p>Next Post</p>
+                                    <a href="#">
+                                        <h4>Telescopes 101</h4>
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#">
+                                        <span class="lnr text-white lnr-arrow-right"></span>
+                                    </a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="img/blog/next.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="comments-area" id="commentArea">
+                        <% if(comments.length>0) { %>
+                        <h4><%= comments.length %> Comments</h4>
+                        <% for(let com of comments) { %>
+                        <div class="comment-list" id="displayComments">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="/<%= com.userId.imageUrl %>" alt="" class="comment-img">
+                                    </div>
+                                    <div class="desc">
+                                        <h5>
+                                            <a href="/profile/<%= com.userId._id %>"><%= com.userId.name %></a>
+                                        </h5>
+                                        <p class="date"><%= com.date %></p>
+                                        <p class="comment">
+                                            <%= com.comment %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- <div class="reply-btn">
+                                        <a href="" class="btn-reply text-uppercase">reply</a>
+                                    </div> -->
+                            </div>
+                        </div>
+                        <% } %>
+                        <% } else { %>
+                        <div class="comment-list" id="noComments">
+                            <div class="single-comment justify-content-between d-flex">
+                                <h3>No comments yet...</h3>
+                            </div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <% if (userIsLoggedIn) { %>
+                    <div class="comment-form" id="commentBox">
+                        <h4>Leave a Comment</h4>
+                        <form id="commentForm">
+
+                            <div class="form-group">
+
+                                <textarea class="form-control mb-10" rows="5" name="comment"
+                                    placeholder="Enter your comment"></textarea>
+                            </div>
+                            <input type="hidden" value="<%= JSON.stringify(blog) %>" name="blog">
+                            <input type="hidden" value="<%= JSON.stringify(user) %>" name="blogger">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button type="submit" class="primary-btn submit_btn">Post Comment</button>
+                            <br><br>
+                        </form>
+                        
+                    </div>
+                    
+                    <% } %>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Posts">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="lnr lnr-magnifier"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <a href="/profile/<%= user._id %>">
+                                <img class="author_img rounded-circle" height=100 width=100 src="/<%= user.imageUrl %>"
+                                alt="">
+                                <h4><%= user.name %></h4>
+                            </a>
+                            <p>Blogger</p>
+                            <div class="social_icon">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-behance"></i>
+                                </a>
+                            </div>
+                            <p><%= user.description %>
+                            </p>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Popular Posts</h3>
+                            <div class="media post_item">
+                                <img src="/img/blog/popular-post/post1.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Space The Final Frontier</h3>
+                                    </a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="/img/blog/popular-post/post2.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>The Amazing Hubble</h3>
+                                    </a>
+                                    <p>02 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="/img/blog/popular-post/post3.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Astronomy Or Astrology</h3>
+                                    </a>
+                                    <p>03 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="media post_item">
+                                <img src="/img/blog/popular-post/post4.jpg" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html">
+                                        <h3>Asteroids telescope</h3>
+                                    </a>
+                                    <p>01 Hours ago</p>
+                                </div>
+                            </div>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single-sidebar-widget tag_cloud_widget">
+                            <h4 class="widget_title">Tag Clouds</h4>
+                            <ul class="list">
+
+                                <% for(tag of blog.tags) { %>
+                                <li>
+                                    <a href="/blogs/tags/<%= tag %>"><%= tag %></a>
+                                </li>
+                                <% } %>
+
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"
+        integrity="sha256-Ls0pXSlb7AYs7evhd+VLnWsZ/AqEHcXBeMZUycz/CcA=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        let totalComments = '<%= comments.length %>';
+        var today = new Date();
+        var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear() + ' ' + today.getHours() + ":" + today.getMinutes();
+        $(document).ready(function () {
+
+        },
+            $('#commentForm').submit(
+                function (e) {
+                    e.preventDefault();
+
+                    fetch('/add-comment', {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'csrf-token': document.querySelector('#commentForm input[name=_csrf]').value
+                        },
+                        method: "POST",
+                        body: JSON.stringify({
+                            blog: document.querySelector('#commentForm input[name=blog]').value,
+                            blogger: document.querySelector('#commentForm input[name=blogger]').value,
+                            comment: document.querySelector('#commentForm textarea').value,
+                        })
+                    }).then((response) => {
+                        response.json()
+                            .then(data => {
+                                console.log(data);
+                                if (data.errorMessage) {
+                                    console.log(data);
+                                    //let reviewBox = document.getElementById("reviewBox");
+                                    let userMessage = document.createElement("div");
+                                    userMessage.classList.add("user-message", "user-message--error");
+                                    userMessage.innerText = data.errorMessage;
+                                    document.getElementById("commentBox").append(userMessage);
+                                    console.log("EOF");
+                                }
+                                else {
+                                    let displayComments = document.getElementById("displayComments");
+                                    let noComments = document.getElementById("noComments");
+                                    // Creating a new comment element
+                                    // Creating the elements
+                                    let newComment = document.createElement("div");
+                                    newComment.className = "comment-list";
+                                    let singleComment = document.createElement("div");
+                                    singleComment.classList.add('single-comment', 'justify-content-between', 'd-flex');
+                                    let userElement = document.createElement("div");
+                                    userElement.classList.add('user', 'justify-content-between', 'd-flex');
+                                    let imageDiv = document.createElement("div");
+                                    imageDiv.className = "thumb";
+                                    let image = document.createElement("img");
+                                    image.src = "/" + data.userImage;
+                                    let details = document.createElement("div");
+                                    details.className = "desc";
+                                    let userNameElement = document.createElement('h5');
+                                    userNameElement.innerText = data.userName;
+                                    let commentText = document.createElement("p");
+                                    let dateText = document.createElement('p');
+                                    dateText.className = "date";
+                                    dateText.innerText = data.date;
+                                    commentText.className = "comment";
+                                    commentText.innerText = data.comment;
+
+                                    // Injecting the elements
+                                    if(totalComments==0) {
+                                        noComments.remove();
+                                    }
+                                    newComment.appendChild(singleComment);
+                                    singleComment.appendChild(userElement);
+                                    userElement.appendChild(imageDiv);
+                                    userElement.appendChild(details);
+                                    details.appendChild(userNameElement);
+                                    details.appendChild(dateText);
+                                    details.appendChild(commentText);
+                                    imageDiv.appendChild(image);
+
+                                    document.getElementById("commentArea").appendChild(newComment);
+                                    console.log("EOF");
+                                }
+                            });
+                    });
+
+
+                })
+        );
+
+    </script>
+
+    <%- include('../includes/end.ejs') %>

@@ -1,0 +1,219 @@
+
+
+<header class="header_area">
+<div class="main_menu">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="/">
+                <!-- <img src="img/logo.png" alt=""> --><span style="font-family: 'Times New Roman', Times, serif;">Stories and Sonnets</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+             aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <div class="row w-100">
+                    <div class="col-lg-7 pr-0">
+                        <ul class="nav navbar-nav center_nav pull-right">
+                            <% if (authorIsLoggedIn) { %>
+                                <li class="nav-item <%= path === '/admin/profile' ? 'active' : '' %>">
+                                    <a class="nav-link" href="/admin/profile">Profile</a>
+             
+                                </li>
+                                <li class="nav-item <%= path === '/admin/add-product' ? 'active' : '' %>">
+                                    <a class="nav-link" href="/admin/add-product">Add Product</a>
+             
+                                </li>
+                                <li class="nav-item <%= path === '/admin/products' ? 'active' : '' %>">
+                                    <a class="nav-link" href="/admin/products">Your products</a>
+             
+                                </li>
+                                
+                                <li class="nav-item submenu dropdown <%= path === '/admin/events' ? 'active' : '' %>"">
+                                    <a href="/admin/events" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item <%= path === '/admin/events' ? 'active' : '' %>">
+                                            <a class="nav-link" href="/admin/add-event">Create Event</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin/events">Your Events</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <% } else { %>
+
+                                <li class="nav-item <%= path === '/' ? 'active' : '' %>">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item submenu dropdown <%= path === '/products' ? 'active' : '' %> <%= path === '/authors' ? 'active' : '' %>">
+                                    <a href="/products" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item <%= path === '/products' ? 'active' : '' %>">
+                                            <a class="nav-link" href="/products">Browse by Books</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/authors">Browse by authors</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- <li class="nav-item <%= path === '/products' ? 'active' : '' %>">
+                                    <a href="/products" class="nav-link">Books</a>
+            
+                                </li> -->
+                                <!-- <li class="nav-item <%= path === '/blogs' ? 'active' : '' %>">
+                                    <a href="/blogs" class="nav-link">Blog</a>
+            
+                                </li> -->
+                                <li class="nav-item submenu dropdown <%= path === '/blogs' ? 'active' : '' %>">
+                                    <a href="/blogs" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blogs</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item <%= path === '/blogs' ? 'active' : '' %>">
+                                            <a class="nav-link" href="/blogs">Explore Blogs</a>
+                                        </li>
+    
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/create-blog">Create blog</a>
+                                        </li>
+                                        <% if (userIsLoggedIn) { %>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/myblogs">Your blogs</a>
+                                            </li>  
+                                        <% } %>
+                                        
+                                    </ul>
+                                </li>
+                                <li class="nav-item submenu dropdown <%= path === '/events' || path === '/discussions' ? 'active' : '' %>">
+                                    <a href="/blogs" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item <%= path === '/events' ? 'active' : '' %>">
+                                            <a class="nav-link" href="/events">Events</a>
+                                        </li>
+    
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/discussions">Discussions</a>
+                                        </li>
+                                       
+                                        
+                                    </ul>
+                                </li>
+                               
+                                <!-- <li class="nav-item  <%= path === '/seller-login' ? 'active' : '' %> <%= path === '/seller-signup' ? 'active' : '' %>">
+                                    <a href="/seller-login" class="nav-link">Seller</a>
+            
+                                </li> -->
+                                <% if (userIsLoggedIn) { %>
+                                    <!-- <li class="nav-item <%= path === '/cart' ? 'active' : '' %>">
+                                        <a class="nav-link" href="/cart">Cart</a>
+                
+                                    </li> -->
+                                    <li class="nav-item <%= path === '/orders' ? 'active' : '' %>">
+                                        <a class="nav-link " href="/orders">Orders</a>
+                
+                                    </li>
+                                <% } %>
+
+                            <% } %>
+
+                            
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <% if ((!userIsLoggedIn) && (!authorIsLoggedIn)) { %>
+                        <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                            <hr>
+
+                            <li class="nav-item <%= path === '/login' ? 'active' : '' %>">
+                                <a class="icons" href="/login">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span style="padding: 1rem;font-size: 15px;font-family: Roberto;">Login</span>
+                                </a>
+                            </li>
+
+                            <hr>
+                            <!-- 
+                            <hr>
+
+                            <li class="nav-item">
+                                <a href="#" class="icons">
+                                    <i class="lnr lnr lnr-cart"></i>
+                                </a>
+                            </li>  -->
+
+                        </ul>
+                        <% } else if(userIsLoggedIn) {%>
+                            <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                                <hr>
+                                <li class="nav-item <%= path === '/cart' ? 'active' : '' %>">
+                                    <a href="/cart" class="icons">
+                                        <i class="lnr lnr lnr-cart" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="/notifications" class="icons">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                        <% if(notifications) { %>
+                                            <span class="count bg-danger"><%= notifications.comments.length+notifications.blogs.length %></span>
+                                        <% } %>
+                                    </a>
+                                </li>
+                                <hr>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle icons" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                    
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/profile">My Profile</a>
+                                        </li>
+                                        <li class="main-header__item">
+                                            <form  action="/logout" method="post">
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <button class="nav-link" type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                       
+                                    </ul>
+                                    
+                                </li>
+    
+                                <hr>
+    
+                            </ul>
+                       
+                        <% } else if(authorIsLoggedIn) {%>
+                            <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                                <hr>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle icons" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="main-header__item">
+                                            <form  action="/logout" method="post">
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <button type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
+    
+                                <hr>
+    
+                            </ul>
+                        <% } %>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+</header>
+<!-- <div style="margin-top:100px"></div> -->
